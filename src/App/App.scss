@@ -1,0 +1,79 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.App {
+
+  .App__header {
+    top: 25px;
+    position: fixed;
+    left: 0;
+  }
+  
+  .App__Logo {
+    color: #000;
+    text-decoration: none;
+    width: 160px;
+    height: 40px;
+    display: flex;
+
+    span {
+      display: inline-block;
+      width: 50%;
+      padding:20px 8px;
+      line-height: 1px;
+      font-size: 22px;
+    }
+
+    .App__Logo--First {
+      text-align: right;
+      background: #FFDE00;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+    }
+
+    .App__Logo--Last {
+      text-align: left; 
+      background: #000;
+      color: #fff;
+      font-family: 'Marck Script', cursive;
+    }
+
+    &:hover {
+      .App__Logo--First {
+        background: #000;
+        color: #fff;
+      }
+      .App__Logo--Last {
+        background: #FFDE00;
+        color: #000;
+      }
+    }
+  }
+
+  .App__SocialIcons {
+    margin-top: 30px;
+    margin-left: 20px;
+
+    .App__SocialIcons__Link {
+      display: inline-block;
+      margin-right: 10px;
+      background: #FFDE00;
+      font-size: 30px;
+      padding: 5px 8px;
+      transition: background .3s ease-out;
+      &:hover {
+        background: #000;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.Wrapper {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.App-intro {
+  display: none
+}

@@ -1,0 +1,31 @@
+.TextBox {
+  border-color: #F9F8F3;
+  padding: 60px 15px;
+  background-color: rgba(226, 225, 215, 0.2); }
+  .TextBox .Texbx__FontDetails {
+    display: flex; }
+    .TextBox .Texbx__FontDetails .FontsDetails__Item {
+      color: rgba(110, 110, 60, 0.5); }
+      .TextBox .Texbx__FontDetails .FontsDetails__Item:after {
+        content: "|";
+        display: inline-block;
+        padding: 0 5px; }
+      .TextBox .Texbx__FontDetails .FontsDetails__Item:hover {
+        background: #FFDE00;
+        color: #262626; }
+        .TextBox .Texbx__FontDetails .FontsDetails__Item:hover:after {
+          background: #fff; }
+  .TextBox textarea {
+    appearance: none;
+    background: none;
+    border: none;
+    resize: none;
+    color: rgba(110, 110, 60, 0.2);
+    font-size: 80px;
+    line-height: 1; }
+    .TextBox textarea:hover {
+      background-color: rgba(226, 225, 215, 0.2); }
+    .TextBox textarea:focus {
+      outline: none; }
+
+/*# sourceMappingURL=TextBox.css.map */
