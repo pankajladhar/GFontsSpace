@@ -20,13 +20,15 @@
       flex: 1;
       justify-content: center;
       margin-right: 10px;
-      cursor: pointer; }
+      cursor: pointer;
+      text-transform: capitalize; }
       .FontOptionContainer ul li:last-child {
         margin-right: 0; }
       .FontOptionContainer ul li:hover {
         background: #000000;
         color: #ffffff; }
       .FontOptionContainer ul li.active {
-        background: #ffdf01; }
+        background: #ffdf01;
+        color: #000; }
 
 /*# sourceMappingURL=FontOptionContainer.css.map */

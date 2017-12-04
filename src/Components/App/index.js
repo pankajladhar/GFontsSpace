@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import _map from 'lodash/map';
+import _uniq from 'lodash/uniq';
+import _cloneDeep from 'lodash/cloneDeep';
 import FontOptionContainer from './../FontOptionContainer';
 import TextBox from './../TextBox';
 import './App.css';
@@ -10,39 +11,60 @@ class App extends Component {
     super(props);
     this.state = {
       googlefonts: [],
+      availableCategories: [],
       fontFamailesForSelectedCatagory: [],
       variantForSelectedFonts: [],
       fontCatogrySelection: "",
       fontFamilySelection: "",
       variantSelection: ""
     }
-    this.handleChangeFontCatogry = this.handleChangeFontCatogry.bind(this);
-    this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
+    this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
   }
 
   componentDidMount() {
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDUYZ9Phtnc_OpfFd39Ri-eQoxbfvcwUeA')
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((fonts) => {
-        let fontsArray = {};
+        let fontsObject = {};
+        let propertiesToBeDeleted = ["kind", "subsets", "version", "lastModified", "files"];
+        let category = "";
+        let categoryArray = ["All Category"];
+
         fonts.items.map((font) => {
-          let objNeedToBeDeleted = ["kind", "subsets", "version", "lastModified", "files"];
+          propertiesToBeDeleted.map((d) => delete font[d]);
+          category = font.category;
+          categoryArray.push(category);
 
-          objNeedToBeDeleted.map((d) => delete font[d]);
-
-          let category = font.category;
-          if (fontsArray[category]) {
-            fontsArray[category].push({ ...font });
-          }
-          else {
-            fontsArray[category] = [{ ...font }]
-          }
+          fontsObject[category] ? fontsObject[category].push({ ...font }) : fontsObject[category] = [{ ...font }]
+          return fontsObject;
         })
-        this.setState({ googlefonts: fontsArray })
+        this.setState({
+          googlefonts: fontsObject,
+          availableCategories: this.__mappedCategoryArray(categoryArray)
+        })
       });
   }
 
-  handleChangeFontCatogry(event) {
+  __mappedCategoryArray(arr) {
+    let uniqValues = _uniq(arr);
+    return uniqValues.map((val) => {
+      return ({
+        name: val,
+        isActive: val === "All Category" ? true : false,
+        handleClickOnCategory: this.handleClickOnCategory
+      })
+    })
+  }
+
+  handleClickOnCategory(event) {
+    let availableCategories = _cloneDeep(this.state.availableCategories)
+    availableCategories.map((category) => {
+      category.isActive = category.name === event.target.dataset.category ? true : false;
+    });
+    this.setState({ availableCategories })
+  }
+
+  /*handleChangeFontCatogry(event) {
     this.setState({
       fontCatogrySelection: event.target.value,
       fontFamailesForSelectedCatagory: this.state.googlefonts[event.target.value]
@@ -58,11 +80,9 @@ class App extends Component {
       fontFamilySelection: event.target.value,
       variantForSelectedFonts: this._getVariants(event.target.value)
     });
-  }
+  }*/
 
   render() {
-    let fontCatagories = Object.keys(this.state.googlefonts);
-
     return (
       <div className="App">
         <header className="App__header">
@@ -71,62 +91,25 @@ class App extends Component {
             <span className="App__Logo--Last">Space</span>
           </a>
           <div className="App__SocialIcons">
-            <a className="App__SocialIcons__Link" 
-              href="https://www.linkedin.com/in/pankaj-ladhar-51781137/" 
+            <a className="App__SocialIcons__Link"
+              href="https://www.linkedin.com/in/pankaj-ladhar-51781137/"
               target="_blank"
+              rel="noopener noreferrer"
               title="Pankaj Ladhar linkedin profile ">
               <i className="fa fa-linkedin"></i>
             </a>
-            <a className="App__SocialIcons__Link" 
-              href="" 
+            <a className="App__SocialIcons__Link"
+              href=""
               target="_blank"
+              rel="noopener noreferrer"
               title="Pankaj Ladhar github profile ">
               <i className="fa fa-github"></i>
             </a>
           </div>
         </header>
         <section className="Wrapper">
-          <FontOptionContainer />
+          <FontOptionContainer categories={this.state.availableCategories} />
           {/* <TextBox /> */}
-
-          <div className="App-intro">
-            <h1>Font Category</h1>
-            <select value={this.state.fontCatogrySelection} onChange={this.handleChangeFontCatogry} className="Font-Category-Options">
-              {/* <option defaultValue="Select Font Category">Select Font Category</option> */}
-              <option value="All Category">All Category</option>
-              {
-                fontCatagories.map((fontcatogry) => <option key={fontcatogry} value={fontcatogry}>{fontcatogry}</option>)
-              }
-            </select>
-          </div>
-          <div className="App-intro">
-            <h1>Font Family</h1>
-            <select value={this.state.fontFamilySelection}
-              onChange={this.handleChangeFontFamily}
-              className="Font-Category-Options"
-              disabled={`${this.state.fontFamailesForSelectedCatagory.length > 0 ? "" : "disabled"}`}>
-              <option defaultValue="Select Font Family">Select Font Family</option>
-              {
-                this.state.fontFamailesForSelectedCatagory.length > 0 &&
-                this.state.fontFamailesForSelectedCatagory.map((fontcatogry, index) =>
-                  <option key={`fontcatogry-${index}`} value={fontcatogry.family}>{fontcatogry.family}</option>)
-              }
-            </select>
-          </div>
-          <div className="App-intro">
-            <h1>Available Variants</h1>
-            <select value={this.state.variantSelection}
-              onChange={() => { }}
-              className="Font-Category-Options"
-              disabled={`${this.state.variantForSelectedFonts.length > 0 ? "" : "disabled"}`}>
-              <option disabled={`${this.state.variantForSelectedFonts.length > 0 ? "disabled" : ""}`} defaultValue="Select Font Variant">Select Font Variant</option>
-              {
-                this.state.variantForSelectedFonts.length > 0 &&
-                this.state.variantForSelectedFonts.map((fontvariant, index) =>
-                  <option key={`fontvariant-${index}`} value={fontvariant}>{fontvariant}</option>)
-              }
-            </select>
-          </div>
         </section>
       </div>
     );

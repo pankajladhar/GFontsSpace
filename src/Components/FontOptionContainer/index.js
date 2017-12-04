@@ -46,7 +46,6 @@ class FontOptionContainer extends Component {
     };
 
     render() {
-
         const styleObj = {
             // fontFamily: "Open sans"
         }
@@ -86,12 +85,14 @@ class FontOptionContainer extends Component {
                 <section className="FontOptionContainer__Item">
                     <h4 className="FontOptionContainer__Title">Classification</h4>
                     <ul>
-                        <li className="active">All Category</li>
-                        <li>Sans Serif</li>
-                        <li>Serif</li>
-                        <li>Display</li>
-                        <li>HandWritting</li>
-                        <li>Monospace</li>
+                        { this.props.categories.map((category, index)=> 
+                            <li key={`${category.name}-${index}`}
+                                data-category={category.name}
+                                className={`${category.isActive ? "active" : "inactive"}`}
+                                onClick={category.handleClickOnCategory}>
+                                {category.name}
+                            </li> ) 
+                        }
                     </ul>
                 </section>
                 <section className="FontOptionContainer__Item">
