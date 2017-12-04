@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import 'react-select/dist/react-select.css'
 
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
@@ -50,21 +50,32 @@ class FontOptionContainer extends Component {
                 </section>
                 <section className="FontOptionContainer__Item">
                     <h4 className="FontOptionContainer__Title">Propeties</h4>
-                    <Select
-                        name="form-field-name"
-                        value={this.state.selectedFontFamily}
-                        onChange={this.handleChangeFontFamily}
-                        options={this.props.fontFamilies}
-                        placeholder="Select Font Family"
-                    />
+                    <div className="FontOptionContainer__Properties">
+                        <Select
+                            name="FontFamilySelectBox"
+                            value={this.state.selectedFontFamily}
+                            onChange={this.handleChangeFontFamily}
+                            options={this.props.fontFamilies}
+                            placeholder="Select Font Family"
+                        />
 
-                    <Select
-                        name="form-field-name"
-                        value={this.state.selectedFontVariant}
-                        onChange={this.handleChangeFontVariant}
-                        options={this.props.fontVariants}
-                        placeholder="Select Font Variants"
-                    />
+                        <Select
+                            name="FontVariantSelectBox"
+                            value={this.state.selectedFontVariant}
+                            onChange={this.handleChangeFontVariant}
+                            options={this.props.fontVariants}
+                            placeholder="Select Font Variants"
+                        />
+                        <div className="FontSize__Option">
+                            <input type="number" name="quantity" min="6" max="248" value="16" />
+                        </div>
+                        <div className="ColorOption__ForeGround">
+                            A
+                        </div>
+
+                        <div className="ColorOption__BackGround"></div>
+                        
+                    </div>
                     {/* <select>
                         <option defaultValue="Select Font Family">Select Font Family</option>
                         {

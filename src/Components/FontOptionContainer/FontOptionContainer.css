@@ -3,7 +3,7 @@
   position: fixed;
   width: 100%;
   max-width: 1000px;
-  padding: 20px; }
+  padding: 20px 20px 8px 20px; }
   .FontOptionContainer .FontOptionContainer__Item {
     padding-bottom: 12px; }
   .FontOptionContainer .FontOptionContainer__Title {
@@ -30,5 +30,41 @@
       .FontOptionContainer ul li.active {
         background: #ffdf01;
         color: #000; }
+  .FontOptionContainer .FontOptionContainer__Properties {
+    display: flex; }
+    .FontOptionContainer .FontOptionContainer__Properties .Select {
+      width: 350px;
+      margin-right: 10px; }
+    .FontOptionContainer .FontOptionContainer__Properties .FontSize__Option input[type="number"] {
+      width: 40px;
+      height: 36px;
+      text-align: center;
+      -webkit-appearance: none;
+      border: none;
+      background: none;
+      border: 1px #ccc solid;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: inherit; }
+      .FontOptionContainer .FontOptionContainer__Properties .FontSize__Option input[type="number"]:focus {
+        outline: none; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption__BackGround {
+      background: red;
+      border: 1px #ccc solid;
+      border-radius: 4px;
+      height: 34px;
+      width: 45px;
+      margin-right: 10px; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption__ForeGround {
+      border: 1px #ccc solid;
+      border-radius: 4px;
+      color: green;
+      height: 34px;
+      width: 45px;
+      margin-right: 10px;
+      font-size: 34px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
 
 /*# sourceMappingURL=FontOptionContainer.css.map */
