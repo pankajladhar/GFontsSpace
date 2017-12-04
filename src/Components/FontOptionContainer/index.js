@@ -66,14 +66,16 @@ class FontOptionContainer extends Component {
                             options={this.props.fontVariants}
                             placeholder="Select Font Variants"
                         />
-                        <div className="FontSize__Option">
-                            <input type="number" name="quantity" min="6" max="248" value="16" />
-                        </div>
-                        <div className="ColorOption__ForeGround">
-                            A
-                        </div>
+                        <div className="OtherProperties">
+                            <div className="FontSize__Option">
+                                <input type="number" name="quantity" min="6" max="248" value="16" />
+                            </div>
+                            <div className="ColorOption__ForeGround">
+                                A
+                            </div>
 
-                        <div className="ColorOption__BackGround"></div>
+                            <div className="ColorOption__BackGround"></div>
+                        </div>
                         
                     </div>
                     {/* <select>

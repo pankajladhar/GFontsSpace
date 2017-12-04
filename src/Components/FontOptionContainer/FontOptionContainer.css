@@ -1,8 +1,8 @@
 .FontOptionContainer {
   border: 1px #dbdbdb solid;
   position: fixed;
-  width: 100%;
-  max-width: 1000px;
+  right: 0;
+  width: 250px;
   padding: 20px 20px 8px 20px; }
   .FontOptionContainer .FontOptionContainer__Item {
     padding-bottom: 12px; }
@@ -11,7 +11,8 @@
     text-transform: uppercase;
     margin-bottom: 6px; }
   .FontOptionContainer ul {
-    display: flex; }
+    display: flex;
+    flex-direction: column; }
     .FontOptionContainer ul li {
       border: 3px #ffdf01 solid;
       border-radius: 3px;
@@ -19,7 +20,7 @@
       display: flex;
       flex: 1;
       justify-content: center;
-      margin-right: 10px;
+      margin-bottom: 10px;
       cursor: pointer;
       text-transform: capitalize; }
       .FontOptionContainer ul li:last-child {
@@ -31,12 +32,15 @@
         background: #ffdf01;
         color: #000; }
   .FontOptionContainer .FontOptionContainer__Properties {
-    display: flex; }
+    display: flex;
+    flex-direction: column; }
     .FontOptionContainer .FontOptionContainer__Properties .Select {
-      width: 350px;
-      margin-right: 10px; }
+      width: 100%;
+      margin-bottom: 10px; }
+    .FontOptionContainer .FontOptionContainer__Properties .OtherProperties {
+      display: flex; }
     .FontOptionContainer .FontOptionContainer__Properties .FontSize__Option input[type="number"] {
-      width: 40px;
+      width: 45px;
       height: 36px;
       text-align: center;
       -webkit-appearance: none;
@@ -52,14 +56,14 @@
       background: red;
       border: 1px #ccc solid;
       border-radius: 4px;
-      height: 34px;
+      height: 36px;
       width: 45px;
       margin-right: 10px; }
     .FontOptionContainer .FontOptionContainer__Properties .ColorOption__ForeGround {
       border: 1px #ccc solid;
       border-radius: 4px;
       color: green;
-      height: 34px;
+      height: 36px;
       width: 45px;
       margin-right: 10px;
       font-size: 34px;
