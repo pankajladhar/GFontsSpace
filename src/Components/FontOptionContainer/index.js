@@ -13,17 +13,23 @@ class FontOptionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: '',
+            selectedFontFamily: '',
+            selectedFontVariant: '',
             displayColorPicker: false,
         }
 
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
+        this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     }
 
 
-    handleChangeFontFamily = (selectedOption) => {
-        this.setState({ selectedOption });
-        this.props.handleChangeFontFamily(selectedOption)
+    handleChangeFontFamily = (selectedFontFamily) => {
+        this.setState({ selectedFontFamily });
+        this.props.handleChangeFontFamily(selectedFontFamily)
+    }
+
+    handleChangeFontVariant = (selectedFontVariant) => {
+        console.log(selectedFontVariant)
     }
 
     render() {
@@ -46,10 +52,18 @@ class FontOptionContainer extends Component {
                     <h4 className="FontOptionContainer__Title">Propeties</h4>
                     <Select
                         name="form-field-name"
-                        value={this.state.selectedOption}
+                        value={this.state.selectedFontFamily}
                         onChange={this.handleChangeFontFamily}
                         options={this.props.fontFamilies}
                         placeholder="Select Font Family"
+                    />
+
+                    <Select
+                        name="form-field-name"
+                        value={this.state.selectedFontVariant}
+                        onChange={this.handleChangeFontVariant}
+                        options={this.props.fontVariants}
+                        placeholder="Select Font Variants"
                     />
                     {/* <select>
                         <option defaultValue="Select Font Family">Select Font Family</option>
