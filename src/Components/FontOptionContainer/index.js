@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
-import WebFont from'webfontloader';
+import WebFont from 'webfontloader';
 import './FontOptionContainer.css'
 
 class FontOptionContainer extends Component {
@@ -10,101 +13,61 @@ class FontOptionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            selectedOption: '',
             displayColorPicker: false,
-            color: {
-                r: '241',
-                g: '112',
-                b: '19',
-                a: '1',
-            }
         }
-        this.handleClick = this.handleClick.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+
+        this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
     }
 
-    componentDidUpdate() {
-        WebFont.load({
-            google: {
-                families: ['Open Sans']
-            }
-        });
+
+    handleChangeFontFamily = (selectedOption) => {
+        this.setState({ selectedOption });
+        this.props.handleChangeFontFamily(selectedOption)
     }
-
-    handleClick = () => {
-        this.setState({ displayColorPicker: !this.state.displayColorPicker })
-    };
-
-    handleClose = () => {
-        this.setState({ displayColorPicker: false })
-    };
-
-    handleChange = (color) => {
-        this.setState({
-            color: color.rgb
-        })
-    };
 
     render() {
-        const styleObj = {
-            // fontFamily: "Open sans"
-        }
-
-        const styles = reactCSS({
-            'default': {
-                color: {
-                    width: '36px',
-                    height: '14px',
-                    borderRadius: '2px',
-                    background: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`,
-                },
-                swatch: {
-                    padding: '5px',
-                    background: '#fff',
-                    borderRadius: '1px',
-                    boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-                    display: 'inline-block',
-                    cursor: 'pointer',
-                },
-                popover: {
-                    position: 'absolute',
-                    zIndex: '2',
-                },
-                cover: {
-                    position: 'fixed',
-                    top: '0px',
-                    right: '0px',
-                    bottom: '0px',
-                    left: '0px',
-                },
-            },
-        });
-
         return (
             <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
                     <h4 className="FontOptionContainer__Title">Classification</h4>
                     <ul>
-                        { this.props.categories.map((category, index)=> 
+                        {this.props.categories.map((category, index) =>
                             <li key={`${category.name}-${index}`}
                                 data-category={category.name}
                                 className={`${category.isActive ? "active" : "inactive"}`}
                                 onClick={category.handleClickOnCategory}>
                                 {category.name}
-                            </li> ) 
+                            </li>)
                         }
                     </ul>
                 </section>
                 <section className="FontOptionContainer__Item">
                     <h4 className="FontOptionContainer__Title">Propeties</h4>
-                    <select>
+                    <Select
+                        name="form-field-name"
+                        value={this.state.selectedOption}
+                        onChange={this.handleChangeFontFamily}
+                        options={this.props.fontFamilies}
+                        placeholder="Select Font Family"
+                    />
+                    {/* <select>
                         <option defaultValue="Select Font Family">Select Font Family</option>
-                    </select>
-                    <select>
+                        {
+                            this.props.fontFamilies.length > 0 &&
+                            this.props.fontFamilies.map((fontFamily, index) => {
+                                return <option key={`${fontFamily}-${index}`}
+                                    value={fontFamily.family}>
+                                    {fontFamily.family}
+                                </option>
+                            })
+                        }
+                    </select> */}
+                    {/* <select>
                         <option defaultValue="Select Font Family">Select Font Variant</option>
-                    </select>
+                    </select> */}
 
-                    <div>
+                    {/* <div>
                         <div style={styles.swatch} onClick={this.handleClick}>
                             <div style={styles.color} />
                         </div>
@@ -116,7 +79,7 @@ class FontOptionContainer extends Component {
 
                     <h1 style={styleObj}>
                         Pankaj
-                    </h1>
+                    </h1> */}
                 </section>
             </section>
         );

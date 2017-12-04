@@ -19,7 +19,7 @@ body {
 }
 
 body * {
-  transition: all .3s ease-out;
+  /* transition: all .3s ease-out; */
   line-height: 0.9;
 }
 

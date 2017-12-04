@@ -10,15 +10,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      googlefonts: [],
+      googleFonts: [],
       availableCategories: [],
+      availableFontFamilies: [],
+
       fontFamailesForSelectedCatagory: [],
       variantForSelectedFonts: [],
       fontCatogrySelection: "",
       fontFamilySelection: "",
       variantSelection: ""
     }
+
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
+    this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
   }
 
   componentDidMount() {
@@ -39,10 +43,20 @@ class App extends Component {
           return fontsObject;
         })
         this.setState({
-          googlefonts: fontsObject,
-          availableCategories: this.__mappedCategoryArray(categoryArray)
+          googleFonts: fontsObject,
+          availableCategories: this.__mappedCategoryArray(categoryArray),
+          availableFontFamilies: this.__getFontsCategorySpecific("All Category")
         })
       });
+  }
+
+  __getFontsCategorySpecific(categoryName) {
+    return categoryName === "All Category" ? "" : this.state.googleFonts[categoryName].map((f)=>{
+      return({
+        value: f.family,
+        label: f.family
+      })
+    })
   }
 
   __mappedCategoryArray(arr) {
@@ -51,23 +65,31 @@ class App extends Component {
       return ({
         name: val,
         isActive: val === "All Category" ? true : false,
-        handleClickOnCategory: this.handleClickOnCategory
+        handleClickOnCategory: this.handleClickOnCategory,
       })
     })
   }
 
   handleClickOnCategory(event) {
+    let categoryName = event.target.dataset.category;
     let availableCategories = _cloneDeep(this.state.availableCategories)
     availableCategories.map((category) => {
-      category.isActive = category.name === event.target.dataset.category ? true : false;
+      category.isActive = category.name === categoryName ? true : false;
     });
-    this.setState({ availableCategories })
+    this.setState({ 
+      availableCategories,
+      availableFontFamilies: this.__getFontsCategorySpecific(categoryName)
+    })
+  }
+
+  handleChangeFontFamily(selectFontFamily) {
+    console.log(selectFontFamily)
   }
 
   /*handleChangeFontCatogry(event) {
     this.setState({
       fontCatogrySelection: event.target.value,
-      fontFamailesForSelectedCatagory: this.state.googlefonts[event.target.value]
+      fontFamailesForSelectedCatagory: this.state.googleFonts[event.target.value]
     });
   }
 
@@ -108,7 +130,11 @@ class App extends Component {
           </div>
         </header>
         <section className="Wrapper">
-          <FontOptionContainer categories={this.state.availableCategories} />
+          <FontOptionContainer 
+            categories={this.state.availableCategories}
+            fontFamilies={this.state.availableFontFamilies}
+            handleChangeFontFamily={this.handleChangeFontFamily}
+          />
           {/* <TextBox /> */}
         </section>
       </div>
