@@ -20,7 +20,7 @@ body {
 
 body * {
   transition: all .3s ease-out;
-  line-height: 1;
+  line-height: 0.9;
 }
 
 ::selection {
@@ -31,4 +31,8 @@ ul {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+h1, h4, p {
+  margin: 0;
 }

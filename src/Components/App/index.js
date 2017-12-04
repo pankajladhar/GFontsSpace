@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import _map from 'lodash/map';
-import TextBox from './../Components/TextBox';
+import FontOptionContainer from './../FontOptionContainer';
+import TextBox from './../TextBox';
 import './App.css';
 
 class App extends Component {
@@ -74,19 +75,19 @@ class App extends Component {
               href="https://www.linkedin.com/in/pankaj-ladhar-51781137/" 
               target="_blank"
               title="Pankaj Ladhar linkedin profile ">
-              <i class="fa fa-linkedin"></i>
+              <i className="fa fa-linkedin"></i>
             </a>
             <a className="App__SocialIcons__Link" 
               href="" 
               target="_blank"
               title="Pankaj Ladhar github profile ">
-              <i class="fa fa-github"></i>
+              <i className="fa fa-github"></i>
             </a>
           </div>
         </header>
         <section className="Wrapper">
-
-          <TextBox />
+          <FontOptionContainer />
+          {/* <TextBox /> */}
 
           <div className="App-intro">
             <h1>Font Category</h1>

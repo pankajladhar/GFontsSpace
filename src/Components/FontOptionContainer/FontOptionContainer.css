@@ -1,0 +1,32 @@
+.FontOptionContainer {
+  border: 1px #dbdbdb solid;
+  position: fixed;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px; }
+  .FontOptionContainer .FontOptionContainer__Item {
+    padding-bottom: 12px; }
+  .FontOptionContainer .FontOptionContainer__Title {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 6px; }
+  .FontOptionContainer ul {
+    display: flex; }
+    .FontOptionContainer ul li {
+      border: 3px #ffdf01 solid;
+      border-radius: 3px;
+      padding: 4px 5px;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      margin-right: 10px;
+      cursor: pointer; }
+      .FontOptionContainer ul li:last-child {
+        margin-right: 0; }
+      .FontOptionContainer ul li:hover {
+        background: #000000;
+        color: #ffffff; }
+      .FontOptionContainer ul li.active {
+        background: #ffdf01; }
+
+/*# sourceMappingURL=FontOptionContainer.css.map */
