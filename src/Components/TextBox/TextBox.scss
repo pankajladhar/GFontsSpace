@@ -8,6 +8,7 @@
     display: flex;
     .FontsDetails__Item {
       color: rgba(110,110,60,0.5);
+      text-transform: capitalize;
 
       &:after {
         content: "|";

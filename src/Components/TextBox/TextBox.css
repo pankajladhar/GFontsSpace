@@ -5,7 +5,8 @@
   .TextBox .Texbx__FontDetails {
     display: flex; }
     .TextBox .Texbx__FontDetails .FontsDetails__Item {
-      color: rgba(110, 110, 60, 0.5); }
+      color: rgba(110, 110, 60, 0.5);
+      text-transform: capitalize; }
       .TextBox .Texbx__FontDetails .FontsDetails__Item:after {
         content: "|";
         display: inline-block;

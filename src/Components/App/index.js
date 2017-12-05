@@ -27,6 +27,7 @@ class App extends Component {
 
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
     this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
+    this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
   }
 
   componentDidMount() {
@@ -101,10 +102,15 @@ class App extends Component {
 
   handleChangeFontFamily(selectedFontFamily) {
     this.setState({
-      selectedFontFamily: selectedFontFamily,
-      availableFontVariants: this.__getVariantsFamilySpecific(selectedFontFamily.value)
+      selectedFontFamily: (selectedFontFamily && selectedFontFamily.value) || "Oswald",
+      availableFontVariants: selectedFontFamily && this.__getVariantsFamilySpecific(selectedFontFamily.value)
     })
+  }
 
+  handleChangeFontVariant(selectedFontVariant){
+    this.setState({
+      selectedFontVariant: (selectedFontVariant && selectedFontVariant.value) || "Regular",
+    })
   }
 
   render() {
@@ -138,6 +144,7 @@ class App extends Component {
             fontFamilies={this.state.availableFontFamilies}
             handleChangeFontFamily={this.handleChangeFontFamily}
             fontVariants={this.state.availableFontVariants}
+            handleChangeFontVariant={this.handleChangeFontVariant}
           />
           <div className="TexBoxContainer">
             <TextBox fontName={this.state.selectedFontFamily}

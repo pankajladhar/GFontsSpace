@@ -16,6 +16,7 @@ class FontOptionContainer extends Component {
             selectedFontFamily: '',
             selectedFontVariant: '',
             displayColorPicker: false,
+            clearable: true,
         }
 
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
@@ -29,7 +30,8 @@ class FontOptionContainer extends Component {
     }
 
     handleChangeFontVariant = (selectedFontVariant) => {
-        console.log(selectedFontVariant)
+        this.setState({ selectedFontVariant });
+        this.props.handleChangeFontVariant(selectedFontVariant)
     }
 
     render() {
@@ -56,6 +58,7 @@ class FontOptionContainer extends Component {
                             value={this.state.selectedFontFamily}
                             onChange={this.handleChangeFontFamily}
                             options={this.props.fontFamilies}
+                            clearable={this.state.clearable}
                             placeholder="Select Font Family"
                         />
 
@@ -64,6 +67,7 @@ class FontOptionContainer extends Component {
                             value={this.state.selectedFontVariant}
                             onChange={this.handleChangeFontVariant}
                             options={this.props.fontVariants}
+                            clearable={this.state.clearable}
                             placeholder="Select Font Variants"
                         />
                         <div className="OtherProperties">
