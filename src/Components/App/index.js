@@ -14,7 +14,10 @@ class App extends Component {
       availableCategories: [],
       availableFontFamilies: [],
       availableFontVariants: [],
-
+      selectedFontFamily : "Oswald",
+      selectedFontVariant: "Regular",
+      selectedFontSize: "80",
+      
       fontFamailesForSelectedCatagory: [],
       variantForSelectedFonts: [],
       fontCatogrySelection: "",
@@ -96,9 +99,10 @@ class App extends Component {
     })
   }
 
-  handleChangeFontFamily(selectFontFamily) {
+  handleChangeFontFamily(selectedFontFamily) {
     this.setState({
-      availableFontVariants: this.__getVariantsFamilySpecific(selectFontFamily.value)
+      selectedFontFamily: selectedFontFamily,
+      availableFontVariants: this.__getVariantsFamilySpecific(selectedFontFamily.value)
     })
 
   }
@@ -136,7 +140,9 @@ class App extends Component {
             fontVariants={this.state.availableFontVariants}
           />
           <div className="TexBoxContainer">
-            <TextBox />
+            <TextBox fontName={this.state.selectedFontFamily}
+              fontVariant={this.state.selectedFontVariant}
+              fontSize={this.state.selectedFontSize}/>
             {/* <TextBox /> */}
           </div>
         </section>

@@ -19,7 +19,7 @@ class TextBox extends Component {
     }
 
     handleClickOutside() {
-        this.handleClickOnHowToUse();
+        this.setState({ isHowToUseTabVisible: false })
     }
 
     render() {
@@ -27,23 +27,23 @@ class TextBox extends Component {
             <div className="TextBox">
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
-                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">Roboto</li>
-                        <li className="FontsDetails__Item FontsDetails__Item--FontVariant">Regular</li>
-                        <li className="FontsDetails__Item FontsDetails__Item--FontSize">80px</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontName}</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant}</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
                     <textarea placeholder="Write Something ..."></textarea>
                 </div>
                 <div className="TextBox__CTA">
-                    <button type="button">
+                    {/* <button type="button">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         Compare
-                    </button>
+                    </button> */}
                     <button type="button" onClick={this.handleClickOnHowToUse}>
                         <i class="fa fa-code" aria-hidden="true"></i>
                         How to use
                     </button>
                 </div>
-                {this.state.isHowToUseTabVisible && <TabContainer fontName="Open+Sans" />}
+                {this.state.isHowToUseTabVisible && <TabContainer fontName={this.props.fontName} />}
             </div>
         );
     }
