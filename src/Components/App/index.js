@@ -97,30 +97,11 @@ class App extends Component {
   }
 
   handleChangeFontFamily(selectFontFamily) {
-    // console.log(this.__getVariantsFamilySpecific(selectFontFamily.value))
     this.setState({
       availableFontVariants: this.__getVariantsFamilySpecific(selectFontFamily.value)
     })
 
   }
-
-  /*handleChangeFontCatogry(event) {
-    this.setState({
-      fontCatogrySelection: event.target.value,
-      fontFamailesForSelectedCatagory: this.state.googleFonts[event.target.value]
-    });
-  }
-
-  _getVariants(fontFamily) {
-   
-  }
-
-  handleChangeFontFamily(event) {
-    this.setState({
-      fontFamilySelection: event.target.value,
-      variantForSelectedFonts: this._getVariants(event.target.value)
-    });
-  }*/
 
   render() {
     return (
@@ -154,7 +135,10 @@ class App extends Component {
             handleChangeFontFamily={this.handleChangeFontFamily}
             fontVariants={this.state.availableFontVariants}
           />
-          {/* <TextBox /> */}
+          <div className="TexBoxContainer">
+            <TextBox />
+            {/* <TextBox /> */}
+          </div>
         </section>
       </div>
     );
