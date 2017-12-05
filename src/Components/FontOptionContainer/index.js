@@ -23,9 +23,14 @@ class FontOptionContainer extends Component {
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     }
 
-
     handleChangeFontFamily = (selectedFontFamily) => {
-        this.setState({ selectedFontFamily });
+        this.setState({ selectedFontFamily },()=>{
+            WebFont.load({
+                google: {
+                    families: [selectedFontFamily.value]
+                }
+            });
+        });
         this.props.handleChangeFontFamily(selectedFontFamily)
     }
 
@@ -82,35 +87,6 @@ class FontOptionContainer extends Component {
                         </div>
                         
                     </div>
-                    {/* <select>
-                        <option defaultValue="Select Font Family">Select Font Family</option>
-                        {
-                            this.props.fontFamilies.length > 0 &&
-                            this.props.fontFamilies.map((fontFamily, index) => {
-                                return <option key={`${fontFamily}-${index}`}
-                                    value={fontFamily.family}>
-                                    {fontFamily.family}
-                                </option>
-                            })
-                        }
-                    </select> */}
-                    {/* <select>
-                        <option defaultValue="Select Font Family">Select Font Variant</option>
-                    </select> */}
-
-                    {/* <div>
-                        <div style={styles.swatch} onClick={this.handleClick}>
-                            <div style={styles.color} />
-                        </div>
-                        {this.state.displayColorPicker ? <div style={styles.popover}>
-                            <div style={styles.cover} onClick={this.handleClose} />
-                            <SketchPicker color={this.state.color} onChange={this.handleChange} />
-                        </div> : null}
-                    </div>
-
-                    <h1 style={styleObj}>
-                        Pankaj
-                    </h1> */}
                 </section>
             </section>
         );
