@@ -22,7 +22,19 @@ class TextBox extends Component {
         this.setState({ isHowToUseTabVisible: false })
     }
 
+    __getFontWeight(x) {
+        return x.toLowerCase() === "regular" ?  400 : x
+    }
+
     render() {
+        
+        const textAreaStyle = {
+            fontFamily: `'${this.props.fontName}', sans-serif`,
+            fontSize: `${this.props.fontSize}px`,
+            fontWeight: this.__getFontWeight(this.props.fontVariant),
+            color: "#f0f"
+        }
+        console.log(textAreaStyle.fontSize)
         return (
             <div className="TextBox">
                 <div className="TextBox__TextArea">
@@ -31,7 +43,7 @@ class TextBox extends Component {
                         <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant}</li>
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
-                    <textarea placeholder="Write Something ..."></textarea>
+                    <textarea style={textAreaStyle} placeholder="Write Something ..." autoFocus></textarea>
                 </div>
                 <div className="TextBox__CTA">
                     {/* <button type="button">

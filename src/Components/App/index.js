@@ -16,7 +16,7 @@ class App extends Component {
       availableFontVariants: [],
       selectedFontFamily : "Oswald",
       selectedFontVariant: "Regular",
-      selectedFontSize: "80",
+      selectedFontSize: "40",
       
       fontFamailesForSelectedCatagory: [],
       variantForSelectedFonts: [],
