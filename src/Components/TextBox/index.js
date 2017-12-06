@@ -47,11 +47,11 @@ class TextBox extends Component {
                 </div>
                 <div className="TextBox__CTA">
                     {/* <button type="button">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
                         Compare
                     </button> */}
                     <button type="button" onClick={this.handleClickOnHowToUse}>
-                        <i class="fa fa-code" aria-hidden="true"></i>
+                        <i className="fa fa-code" aria-hidden="true"></i>
                         How to use
                     </button>
                 </div>

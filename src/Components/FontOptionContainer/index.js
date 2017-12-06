@@ -15,16 +15,38 @@ class FontOptionContainer extends Component {
         this.state = {
             selectedFontFamily: '',
             selectedFontVariant: '',
-            displayColorPicker: false,
+            displayForeGroundColorPicker: false,
+            displayBackGroundColorPicker: false,
             clearable: true,
+
+            foreGroundColor: {
+                r: '0',
+                g: '0',
+                b: '0',
+                a: '1',
+            },
+            backGroundColor: {
+                r: '255',
+                g: '223',
+                b: '1',
+                a: '1',
+            },
         }
 
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
+
+        this.handleClickOnForeGroundColorPicker = this.handleClickOnForeGroundColorPicker.bind(this);
+        this.handleCloseOnForeGroundColorPicker = this.handleCloseOnForeGroundColorPicker.bind(this);
+        this.handleChangeOnForeGroundColorPicker = this.handleChangeOnForeGroundColorPicker.bind(this);
+
+        this.handleClickOnBackGroundColorPicker = this.handleClickOnBackGroundColorPicker.bind(this);
+        this.handleCloseOnBackGroundColorPicker = this.handleCloseOnBackGroundColorPicker.bind(this);
+        this.handleChangeOnBackGroundColorPicker = this.handleChangeOnBackGroundColorPicker.bind(this);
     }
 
     handleChangeFontFamily = (selectedFontFamily) => {
-        this.setState({ selectedFontFamily },()=>{
+        this.setState({ selectedFontFamily }, () => {
             selectedFontFamily && WebFont.load({
                 google: {
                     families: [selectedFontFamily.value]
@@ -39,7 +61,41 @@ class FontOptionContainer extends Component {
         this.props.handleChangeFontVariant(selectedFontVariant)
     }
 
+    handleClickOnForeGroundColorPicker = () => {
+        this.setState({ displayForeGroundColorPicker: !this.state.displayForeGroundColorPicker })
+    };
+
+    handleCloseOnForeGroundColorPicker = () => {
+        this.setState({ displayForeGroundColorPicker: false })
+    };
+
+    handleChangeOnForeGroundColorPicker = (color) => {
+        this.setState({ foreGroundColor: color.rgb })
+    };
+
+    handleClickOnBackGroundColorPicker = () => {
+        this.setState({ displayBackGroundColorPicker: !this.state.displayBackGroundColorPicker })
+    };
+
+    handleCloseOnBackGroundColorPicker = () => {
+        this.setState({ displayBackGroundColorPicker: false })
+    };
+
+    handleChangeOnBackGroundColorPicker = (color) => {
+        this.setState({ backGroundColor: color.rgb })
+    };
+
     render() {
+        const styles = reactCSS({
+            'default': {
+                foreGroundColor: {
+                    color: `rgba(${this.state.foreGroundColor.r}, ${this.state.foreGroundColor.g}, ${this.state.foreGroundColor.b}, ${this.state.backGroundColor.a})`,
+                },
+                backGroundColor: {
+                    background: `rgba(${this.state.backGroundColor.r}, ${this.state.backGroundColor.g}, ${this.state.backGroundColor.b}, ${this.state.backGroundColor.a})`,
+                }
+            },
+        });
         return (
             <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
@@ -80,15 +136,37 @@ class FontOptionContainer extends Component {
                                 <input type="number" name="quantity" min="6" max="248" value="16" />
                             </div>
                             <div className="ColorOption__ForeGround">
-                                A
+                                <div className="ColorOption--Swatch" onClick={this.handleClickOnForeGroundColorPicker}>
+                                    <div className="ColorOption--Color" style={styles.foreGroundColor}>
+                                        A
+                                    </div>
+                                </div>
+                                {this.state.displayForeGroundColorPicker ?
+                                    <div className="ColorOption--Popover">
+                                        <div className="ColorOption--Cover" onClick={this.handleCloseOnForeGroundColorPicker} />
+                                        <SketchPicker color={this.state.foreGroundColor} onChange={this.handleChangeOnForeGroundColorPicker} />
+                                    </div> :
+                                    null}
+
                             </div>
 
-                            <div className="ColorOption__BackGround"></div>
+                            <div className="ColorOption__BackGround">
+                                <div className="ColorOption--Swatch" onClick={this.handleClickOnBackGroundColorPicker}>
+                                    <div className="ColorOption--Color" style={styles.backGroundColor} />
+                                </div>
+                                {this.state.displayBackGroundColorPicker ?
+                                    <div className="ColorOption--Popover">
+                                        <div className="ColorOption--Cover" onClick={this.handleCloseOnBackGroundColorPicker} />
+                                        <SketchPicker color={this.state.backGroundColor} onChange={this.handleChangeOnBackGroundColorPicker} />
+                                    </div> :
+                                    null}
+
+                            </div>
                         </div>
-                        
+
                     </div>
                 </section>
-            </section>
+            </section >
         );
     }
 }

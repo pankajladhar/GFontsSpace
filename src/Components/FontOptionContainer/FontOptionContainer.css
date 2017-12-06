@@ -52,23 +52,35 @@
       font-size: inherit; }
       .FontOptionContainer .FontOptionContainer__Properties .FontSize__Option input[type="number"]:focus {
         outline: none; }
-    .FontOptionContainer .FontOptionContainer__Properties .ColorOption__BackGround {
-      background: red;
-      border: 1px #ccc solid;
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption--Popover {
+      position: absolute;
+      z-index: 2;
+      right: 20px; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption--Swatch {
+      padding: 5px;
+      background: #fff;
+      border-radius: 1px;
       border-radius: 4px;
       height: 36px;
       width: 45px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      cursor: pointer; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption--Cover {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption--Color {
+      width: 100%;
+      height: 100%;
+      border-radius: 2px; }
+    .FontOptionContainer .FontOptionContainer__Properties .ColorOption__BackGround {
       margin-right: 10px; }
     .FontOptionContainer .FontOptionContainer__Properties .ColorOption__ForeGround {
-      border: 1px #ccc solid;
-      border-radius: 4px;
-      color: green;
-      height: 36px;
-      width: 45px;
       margin-right: 10px;
-      font-size: 34px;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
+      font-size: 32px;
+      text-align: center; }
 
 /*# sourceMappingURL=FontOptionContainer.css.map */
