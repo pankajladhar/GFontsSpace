@@ -19,7 +19,7 @@ class TabContainer extends Component {
                             To embed your selected fonts into a webpage, copy this code into the &lt;head&gt; of your HTML document.
 
                                    <pre>
-                                &lt;link href="https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName}</span>" rel="stylesheet"&gt;
+                                &lt;link href="https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>" rel="stylesheet"&gt;
                                    </pre>
                         </p>
                         <p className="TabContainer__Tab--Content">
@@ -27,8 +27,8 @@ class TabContainer extends Component {
                             Use the following CSS rules to specify these families:
                             <pre>font-family: 'Noto Sans', sans-serif;</pre>
                             <strong>Goolgle Fonts:</strong>
-                            <a className="Link" href={`https://fonts.google.com/specimen/${this.props.fontName}`} target="_blank">
-                                https://fonts.google.com/specimen/{this.props.fontName}
+                            <a className="Link" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
+                                https://fonts.google.com/specimen/{this.props.fontName.replace(/\s/g, "+")}
                             </a>
                         </p>
 
@@ -40,7 +40,7 @@ class TabContainer extends Component {
 
                                     <pre>
                                 &lt;style&gt;<br />
-                                @import url('https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName}</span>');<br />
+                                @import url('https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>');<br />
                                 &lt;/style&gt;
                                     </pre>
                         </p>
@@ -48,7 +48,10 @@ class TabContainer extends Component {
                             <h4>Specify in CSS</h4>
                             Use the following CSS rules to specify these families:
                                     <pre>font-family: 'Noto Sans', sans-serif;</pre>
-                            <strong>Goolgle Fonts:</strong> <a className="Link" href="https://fonts.google.com/specimen/Noto+Sans" target="_blank">https://fonts.google.com/specimen/Noto+Sans</a>
+                            <strong>Goolgle Fonts:</strong> 
+                            <a className="Link" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
+                                https://fonts.google.com/specimen/{this.props.fontName.replace(/\s/g, "+")}
+                            </a>
                         </p>
                     </TabPanel>
                 </Tabs>
