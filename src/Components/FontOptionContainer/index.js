@@ -25,7 +25,7 @@ class FontOptionContainer extends Component {
 
     handleChangeFontFamily = (selectedFontFamily) => {
         this.setState({ selectedFontFamily },()=>{
-            WebFont.load({
+            selectedFontFamily && WebFont.load({
                 google: {
                     families: [selectedFontFamily.value]
                 }

@@ -14,12 +14,12 @@ class TabContainer extends Component {
                     </TabList>
 
                     <TabPanel>
-                        <p class="TabContainer__Tab--Content">
+                        <p className="TabContainer__Tab--Content">
                             <h4>Embed Font</h4>
                             To embed your selected fonts into a webpage, copy this code into the &lt;head&gt; of your HTML document.
 
                                    <pre>
-                                &lt;link href="https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>" rel="stylesheet"&gt;
+                                &lt;link href="https://fonts.googleapis.com/css?family=<span className="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>" rel="stylesheet"&gt;
                                    </pre>
                         </p>
                         <p className="TabContainer__Tab--Content">
@@ -34,13 +34,13 @@ class TabContainer extends Component {
 
                     </TabPanel>
                     <TabPanel>
-                        <p class="TabContainer__Tab--Content">
+                        <p className="TabContainer__Tab--Content">
                             <h4>Embed Font</h4>
                             To embed your selected fonts into a webpage, copy this code into the &lt;head&gt; of your HTML document.
 
                                     <pre>
                                 &lt;style&gt;<br />
-                                @import url('https://fonts.googleapis.com/css?family=<span class="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>');<br />
+                                @import url('https://fonts.googleapis.com/css?family=<span className="Text__bold">{this.props.fontName.replace(/\s/g, "+")}</span>');<br />
                                 &lt;/style&gt;
                                     </pre>
                         </p>
