@@ -6,11 +6,14 @@
     "react-scripts": "1.0.17"
   },
   "dependencies": {
+    "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
     "react-color": "^2.13.8",
     "react-dom": "^16.2.0"
   },
   "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

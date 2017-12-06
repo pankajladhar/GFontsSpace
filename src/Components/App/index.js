@@ -4,6 +4,7 @@ import _uniq from 'lodash/uniq';
 import _cloneDeep from 'lodash/cloneDeep';
 import FontOptionContainer from './../FontOptionContainer';
 import TextBox from './../TextBox';
+import Header from './../Header';
 import './App.css';
 
 class App extends Component {
@@ -17,12 +18,6 @@ class App extends Component {
       selectedFontFamily : "Oswald",
       selectedFontVariant: "Regular",
       selectedFontSize: "40",
-      
-      fontFamailesForSelectedCatagory: [],
-      variantForSelectedFonts: [],
-      fontCatogrySelection: "",
-      fontFamilySelection: "",
-      variantSelection: ""
     }
 
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
@@ -116,28 +111,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App__header">
-          <a href="/" className="App__Logo">
-            <span className="App__Logo--First">GFonts</span>
-            <span className="App__Logo--Last">Space</span>
-          </a>
-          <div className="App__SocialIcons">
-            <a className="App__SocialIcons__Link"
-              href="https://www.linkedin.com/in/pankaj-ladhar-51781137/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Pankaj Ladhar linkedin profile ">
-              <i className="fa fa-linkedin"></i>
-            </a>
-            <a className="App__SocialIcons__Link"
-              href=""
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Pankaj Ladhar github profile ">
-              <i className="fa fa-github"></i>
-            </a>
-          </div>
-        </header>
+        <Header/>
         <section className="Wrapper">
           <FontOptionContainer
             categories={this.state.availableCategories}
