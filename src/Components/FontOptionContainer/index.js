@@ -17,13 +17,6 @@ class FontOptionContainer extends Component {
             displayForeGroundColorPicker: false,
             displayBackGroundColorPicker: false,
             clearable: true,
-
-            foreGroundColor: {
-                r: '0',
-                g: '0',
-                b: '0',
-                a: '1',
-            },
             backGroundColor: {
                 r: '255',
                 g: '255',
@@ -93,10 +86,12 @@ class FontOptionContainer extends Component {
                                 <input type="number" name="quantity" min="6" max="248" value="16" />
                             </div>
                             <div className="ColorOption__ForeGround">
-                                <ColorPicker color={this.state.foreGroundColor}/>
+                                <ColorPicker color={this.props.color}
+                                    handleChangeColor={this.props.handleChangeColor}
+                                />
                             </div>
                             <div className="ColorOption__BackGround">
-                                <ColorPicker color={this.state.backGroundColor}
+                                <ColorPicker color={this.props.bgColor}
                                     isBackgroundColorPicker
                                 />
                             </div>

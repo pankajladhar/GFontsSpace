@@ -32,9 +32,9 @@ class TextBox extends Component {
             fontFamily: `'${this.props.fontName}', sans-serif`,
             fontSize: `${this.props.fontSize}px`,
             fontWeight: this.__getFontWeight(this.props.fontVariant),
-            color: "#f0f"
+            color: `rgba(${this.props.color.r}, ${this.props.color.g}, ${this.props.color.b}, ${this.props.color.a})`,
         }
-        console.log(textAreaStyle.fontSize)
+        
         return (
             <div className="TextBox">
                 <div className="TextBox__TextArea">

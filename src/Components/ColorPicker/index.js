@@ -13,7 +13,6 @@ class ColorPicker extends Component {
         }
         this.handOnClick = this.handOnClick.bind(this);
         this.handOnChange = this.handOnChange.bind(this);
-        this.handOnClose = this.handOnClose.bind(this);
     }
 
     handOnClick() {
@@ -23,16 +22,15 @@ class ColorPicker extends Component {
     handOnChange(color) {
         this.setState({ color: color.rgb },()=>{
             if(this.props.isBackgroundColorPicker )
-            document.body.style.backgroundColor = `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`;
+                document.body.style.backgroundColor = `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`;
+            else 
+                this.props.handleChangeColor(color)
         })
         // this.props.handOnChange()
     }
 
     handleClickOutside() {
         this.setState({ displayColorPicker: false })
-    }
-
-    handOnClose() {
     }
 
     __getStyleObject(isBackgroundColorPicker) {
