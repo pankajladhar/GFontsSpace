@@ -1,0 +1,33 @@
+.ColorPicker {
+  .ColorPicker__Popover {
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+  }
+  
+  .ColorPicker__Swatch {
+    padding: 5px;
+    background: #fff;
+    border-radius: 1px;
+    border-radius: 4px;
+    height: 36px;
+    width: 45px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .ColorPicker__Cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .ColorPicker__Color {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+  }
+}
