@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker renders correctly 1`] = `
+<div
+  className="ColorPicker"
+>
+  <div
+    className="ColorPicker__Swatch"
+    onClick={[Function]}
+  >
+    <div
+      className="ColorPicker__Color"
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 1)",
+        }
+      }
+    >
+      A
+    </div>
+  </div>
+</div>
+`;

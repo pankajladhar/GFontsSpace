@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FontOptionContainer renders correctly 1`] = `
+<section
+  className="FontOptionContainer"
+>
+  <section
+    className="FontOptionContainer__Item"
+  >
+    <h4
+      className="FontOptionContainer__Title"
+    >
+      Classification
+    </h4>
+    <ul>
+      <li
+        className="active"
+        data-category="sarif"
+        onClick={[Function]}
+      >
+        sarif
+      </li>
+    </ul>
+  </section>
+  <section
+    className="FontOptionContainer__Item"
+  >
+    <h4
+      className="FontOptionContainer__Title"
+    >
+      Propeties
+    </h4>
+    <div
+      className="FontOptionContainer__Properties"
+    >
+      <div
+        className="Select Select--single is-clearable is-searchable"
+        style={undefined}
+      >
+        <div
+          className="Select-control"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={undefined}
+        >
+          <span
+            className="Select-multi-value-wrapper"
+            id="react-select-2--value"
+          >
+            <div
+              className="Select-placeholder"
+            >
+              Select Font Family
+            </div>
+            <div
+              className="Select-input"
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-activedescendant="react-select-2--value"
+                aria-describedby={undefined}
+                aria-expanded="false"
+                aria-haspopup="false"
+                aria-label={undefined}
+                aria-labelledby={undefined}
+                aria-owns=""
+                className={undefined}
+                id={undefined}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                role="combobox"
+                style={
+                  Object {
+                    "boxSizing": "content-box",
+                    "width": "5px",
+                  }
+                }
+                tabIndex={undefined}
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </span>
+          <span
+            className="Select-arrow-zone"
+            onMouseDown={[Function]}
+          >
+            <span
+              className="Select-arrow"
+              onMouseDown={[Function]}
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="Select Select--single is-clearable is-searchable"
+        style={undefined}
+      >
+        <div
+          className="Select-control"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={undefined}
+        >
+          <span
+            className="Select-multi-value-wrapper"
+            id="react-select-3--value"
+          >
+            <div
+              className="Select-placeholder"
+            >
+              Select Font Variants
+            </div>
+            <div
+              className="Select-input"
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-activedescendant="react-select-3--value"
+                aria-describedby={undefined}
+                aria-expanded="false"
+                aria-haspopup="false"
+                aria-label={undefined}
+                aria-labelledby={undefined}
+                aria-owns=""
+                className={undefined}
+                id={undefined}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                role="combobox"
+                style={
+                  Object {
+                    "boxSizing": "content-box",
+                    "width": "5px",
+                  }
+                }
+                tabIndex={undefined}
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </span>
+          <span
+            className="Select-arrow-zone"
+            onMouseDown={[Function]}
+          >
+            <span
+              className="Select-arrow"
+              onMouseDown={[Function]}
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="OtherProperties"
+      >
+        <div
+          className="FontSize__Option"
+        >
+          <input
+            max="248"
+            min="6"
+            name="quantity"
+            type="number"
+            value="16"
+          />
+        </div>
+        <div
+          className="ColorOption__ForeGround"
+        >
+          <div
+            className="ColorPicker"
+          >
+            <div
+              className="ColorPicker__Swatch"
+              onClick={[Function]}
+            >
+              <div
+                className="ColorPicker__Color"
+                style={
+                  Object {
+                    "color": "rgba(0, 0, 0, 1)",
+                  }
+                }
+              >
+                A
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ColorOption__BackGround"
+        >
+          <div
+            className="ColorPicker"
+          >
+            <div
+              className="ColorPicker__Swatch"
+              onClick={[Function]}
+            >
+              <div
+                className="ColorPicker__Color"
+                style={
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+`;
