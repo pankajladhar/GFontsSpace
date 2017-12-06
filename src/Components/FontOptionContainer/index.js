@@ -82,7 +82,9 @@ class FontOptionContainer extends Component {
     };
 
     handleChangeOnBackGroundColorPicker = (color) => {
-        this.setState({ backGroundColor: color.rgb })
+        this.setState({ backGroundColor: color.rgb },()=>{
+            document.body.style.backgroundColor = `rgba(${this.state.backGroundColor.r}, ${this.state.backGroundColor.g}, ${this.state.backGroundColor.b}, ${this.state.backGroundColor.a})`;
+        })
     };
 
     render() {
