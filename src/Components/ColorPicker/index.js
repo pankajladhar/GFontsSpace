@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SketchPicker } from 'react-color';
-
+import enhanceWithClickOutside from 'react-click-outside';
 import './ColorPicker.css';
 
 class ColorPicker extends Component {
@@ -28,8 +28,11 @@ class ColorPicker extends Component {
         // this.props.handOnChange()
     }
 
-    handOnClose() {
+    handleClickOutside() {
         this.setState({ displayColorPicker: false })
+    }
+
+    handOnClose() {
     }
 
     __getStyleObject(isBackgroundColorPicker) {
@@ -55,7 +58,6 @@ class ColorPicker extends Component {
                 </div>
                 {this.state.displayColorPicker ?
                     <div className="ColorPicker__Popover">
-                        <div className="ColorPicker__Cover" onClick={this.handOnClose} />
                         <SketchPicker color={this.state.color} onChange={this.handOnChange} />
                     </div> :
                     null}
@@ -69,4 +71,4 @@ ColorPicker.propTypes = {
 
 };
 
-export default ColorPicker;
+export default enhanceWithClickOutside(ColorPicker);
