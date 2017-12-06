@@ -1,8 +1,9 @@
 .TextBox {
-  border-color: #F9F8F3;  
-  background-color: rgba(226, 225, 215, 0.2);
   margin-bottom: 20px;
-  // background-color: rgba(226,225,215,0.2); // hover color
+
+  &:hover, &:focus {
+    background-color: rgba(226, 225, 215, 0.2);
+  }
   
   .Texbx__FontDetails {
     display: flex;
@@ -45,10 +46,6 @@
   
       &::placeholder{
         color: rgba(110,110,60,0.2);
-      }
-  
-      &:hover {
-        // background-color: rgba(226,225,215,0.2);
       }
   
       &:focus {

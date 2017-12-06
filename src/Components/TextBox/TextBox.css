@@ -1,7 +1,7 @@
 .TextBox {
-  border-color: #F9F8F3;
-  background-color: rgba(226, 225, 215, 0.2);
   margin-bottom: 20px; }
+  .TextBox:hover, .TextBox:focus {
+    background-color: rgba(226, 225, 215, 0.2); }
   .TextBox .Texbx__FontDetails {
     display: flex; }
     .TextBox .Texbx__FontDetails .FontsDetails__Item {
