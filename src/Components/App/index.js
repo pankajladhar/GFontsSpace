@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _map from 'lodash/map';
 import _uniq from 'lodash/uniq';
 import _cloneDeep from 'lodash/cloneDeep';
+import { fetchGoolgeFonts } from './../../Mapper';
 import FontOptionContainer from './../FontOptionContainer';
 import TextBox from './../TextBox';
 import Header from './../Header';
@@ -39,6 +40,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    fetchGoolgeFonts().then((x)=>{
+      console.log(x)
+    })
+
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDUYZ9Phtnc_OpfFd39Ri-eQoxbfvcwUeA')
       .then(res => res.json())
       .then((fonts) => {
