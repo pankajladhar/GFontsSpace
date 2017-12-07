@@ -17,6 +17,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "PUBLIC_URL=. react-scripts build",
+    "release": "npm run build && git checkout gh-pages && sh ./build.sh",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
