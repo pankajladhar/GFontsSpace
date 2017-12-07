@@ -9,8 +9,12 @@
   "dependencies": {
     "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
+    "react-click-outside": "^3.0.0",
     "react-color": "^2.13.8",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-select": "1.1.0",
+    "react-tabs": "^2.1.1",
+    "webfontloader": "1.6.28"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
