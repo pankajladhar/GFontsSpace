@@ -9,6 +9,7 @@ mv ./build/index.html index.html
 mv ./build/favicon.ico favicon.ico
 mv ./build/asset-manifest.json asset-manifest.json
 mv ./build/service-worker.js service-worker.js
+mb ./buildmanifest.json manifest.json
 mv ./build/static/ static
 
 today=`date '+%Y_%m_%d__%H_%M_%S'`;
