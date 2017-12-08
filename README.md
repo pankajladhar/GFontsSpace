@@ -16,3 +16,9 @@ In above can case this helps a lot. User can test all available fonts without an
 1. Allow user to compare multiple fonts.
 1. Add **Hide Control** button to hide all with options (in right side) to get better preview
 1. Add category for layout i.e. Image with text, blog template. 
+
+## Contributing
+Feel free to give feedback or raise issue. I'd love to have your helping hand on GFontsSpace! See [CONTRIBUTING.md](https://github.com/pankajladhar/GFontsSpace/blob/master/CONTRIBUTING.md) for more information on how to get started.
+
+## License
+[MIT](https://github.com/pankajladhar/GFontsSpace/blob/master/LICENSE) Licensed. Copyright (c) [Pankaj Ladhar](mailto:ladharpankaj@gmail.com) 2017.
