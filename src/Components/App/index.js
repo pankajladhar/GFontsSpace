@@ -41,7 +41,6 @@ class App extends Component {
 
   componentDidMount() {
     fetchGoolgeFonts().then((res) => {
-      console.log(res.fonts)
       this.setState({
         googleFonts: res.fonts,
         availableCategories: this.__mappedCategoryArray(res.categories),
@@ -76,20 +75,10 @@ class App extends Component {
 
   handleChangeFontFamily(selectedFontFamily) {
     this.setState({
-      selectedFontFamily: selectedFontFamily.value,
-      availableFontVariants: this.__getVariantsFamilySpecific(selectedFontFamily.value)
+      selectedFontFamily: (selectedFontFamily && selectedFontFamily.value) || "Oswald",
+      availableFontVariants: (selectedFontFamily && this.__getVariantsFamilySpecific(selectedFontFamily.value)) || ""
     })
   }
-
-  /*__getFontsCategorySpecific(categoryName) {
-    return categoryName === "All Category" ? "" : this.state.googleFonts[categoryName].map((f) => {
-      return ({
-        value: f.family,
-        label: f.family,
-        variants: f.variants
-      })
-    })
-  }*/
 
   __getVariantsFamilySpecific(family) {
     let availableFontVariants = _cloneDeep(this.state.availableFontFamilies);
@@ -98,13 +87,11 @@ class App extends Component {
 
   handleChangeFontVariant(selectedFontVariant) {
     this.setState({
-      selectedFontVariant: (selectedFontVariant && selectedFontVariant.value) || "Regular",
+      selectedFontVariant: selectedFontVariant.value,
     })
   }
 
   handleChangeColor(color) {
-
-    console.log("sdds", color)
     this.setState({ foreGroundColor: color.rgb })
   }
 

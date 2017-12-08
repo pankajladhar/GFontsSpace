@@ -13,11 +13,10 @@ class FontOptionContainer extends Component {
         super(props);
         this.state = {
             selectedFontFamily: '',
-            selectedFontVariant: '',
+            selectedFontVariant: 'regular',
             disabledFontVarians: true,
             displayForeGroundColorPicker: false,
             displayBackGroundColorPicker: false,
-            clearable: true,
             backGroundColor: {
                 r: '255',
                 g: '255',
@@ -33,7 +32,8 @@ class FontOptionContainer extends Component {
     handleChangeFontFamily = (selectedFontFamily) => {
         this.setState({ 
             selectedFontFamily,
-            disabledFontVarians: false
+            disabledFontVarians: selectedFontFamily ==null ? true : false,
+            selectedFontVariant: 'regular',
         }, () => {
             selectedFontFamily && WebFont.load({
                 google: {
@@ -50,7 +50,6 @@ class FontOptionContainer extends Component {
     }
 
     render() {
-        console.log(Object.keys(this.state.selectedFontFamily).length)
         return (
             <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
@@ -74,7 +73,7 @@ class FontOptionContainer extends Component {
                             value={this.state.selectedFontFamily}
                             onChange={this.handleChangeFontFamily}
                             options={this.props.fontFamilies}
-                            clearable={this.state.clearable}
+                            clearable={true}
                             placeholder="Select Font Family"
                         />
 
@@ -84,7 +83,8 @@ class FontOptionContainer extends Component {
                             onChange={this.handleChangeFontVariant}
                             options={this.props.fontVariants}
                             disabled={this.state.disabledFontVarians}
-                            clearable={this.state.clearable}
+                            clearable={false}
+                            backspaceRemoves={false}
                             placeholder="Select Font Variants"
                         />
                         <div className="OtherProperties">
