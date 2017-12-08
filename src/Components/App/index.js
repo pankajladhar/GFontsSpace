@@ -36,6 +36,7 @@ class App extends Component {
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
     this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
     this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
+    this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
   }
 
@@ -95,6 +96,10 @@ class App extends Component {
     this.setState({ foreGroundColor: color.rgb })
   }
 
+  handleChangeFontSize(selectedFontSize) {
+    this.setState({ selectedFontSize })
+  }
+
   render() {
     return (
       <div className="App">
@@ -106,6 +111,7 @@ class App extends Component {
             handleChangeFontFamily={this.handleChangeFontFamily}
             fontVariants={this.state.availableFontVariants}
             handleChangeFontVariant={this.handleChangeFontVariant}
+            handleChangeFontSize={this.handleChangeFontSize}
             color={this.state.foreGroundColor}
             handleChangeColor={this.handleChangeColor}
             bgColor={this.state.backGroundColor}

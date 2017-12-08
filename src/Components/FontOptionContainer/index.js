@@ -13,7 +13,8 @@ class FontOptionContainer extends Component {
         super(props);
         this.state = {
             selectedFontFamily: '',
-            selectedFontVariant: 'regular',
+            selectedFontVariant: '',
+            selectedFontSize: 40,
             disabledFontVarians: true,
             displayForeGroundColorPicker: false,
             displayBackGroundColorPicker: false,
@@ -27,12 +28,13 @@ class FontOptionContainer extends Component {
 
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
+        this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
     }
 
-    handleChangeFontFamily = (selectedFontFamily) => {
-        this.setState({ 
+    handleChangeFontFamily(selectedFontFamily) {
+        this.setState({
             selectedFontFamily,
-            disabledFontVarians: selectedFontFamily ==null ? true : false,
+            disabledFontVarians: selectedFontFamily == null ? true : false,
             selectedFontVariant: 'regular',
         }, () => {
             selectedFontFamily && WebFont.load({
@@ -44,9 +46,17 @@ class FontOptionContainer extends Component {
         this.props.handleChangeFontFamily(selectedFontFamily)
     }
 
-    handleChangeFontVariant = (selectedFontVariant) => {
+    handleChangeFontVariant(selectedFontVariant) {
         this.setState({ selectedFontVariant });
         this.props.handleChangeFontVariant(selectedFontVariant)
+    }
+
+    handleChangeFontSize(event) {
+        let selectedFontSize = event.target.value
+        this.setState({
+            selectedFontSize
+        });
+        this.props.handleChangeFontSize(selectedFontSize)
     }
 
     render() {
@@ -89,7 +99,12 @@ class FontOptionContainer extends Component {
                         />
                         <div className="OtherProperties">
                             <div className="FontSize__Option">
-                                <input type="number" name="quantity" min="6" max="248" value="16" />
+                                <input type="number"
+                                    name="quantity"
+                                    min="9"
+                                    max="248"
+                                    onChange={this.handleChangeFontSize}
+                                    value={this.state.selectedFontSize} />
                             </div>
                             <div className="ColorOption__ForeGround">
                                 <ColorPicker color={this.props.color}
