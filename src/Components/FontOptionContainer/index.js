@@ -14,6 +14,7 @@ class FontOptionContainer extends Component {
         this.state = {
             selectedFontFamily: '',
             selectedFontVariant: '',
+            disabledFontVarians: true,
             displayForeGroundColorPicker: false,
             displayBackGroundColorPicker: false,
             clearable: true,
@@ -30,7 +31,10 @@ class FontOptionContainer extends Component {
     }
 
     handleChangeFontFamily = (selectedFontFamily) => {
-        this.setState({ selectedFontFamily }, () => {
+        this.setState({ 
+            selectedFontFamily,
+            disabledFontVarians: false
+        }, () => {
             selectedFontFamily && WebFont.load({
                 google: {
                     families: [selectedFontFamily.value]
@@ -46,6 +50,7 @@ class FontOptionContainer extends Component {
     }
 
     render() {
+        console.log(Object.keys(this.state.selectedFontFamily).length)
         return (
             <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
@@ -78,6 +83,7 @@ class FontOptionContainer extends Component {
                             value={this.state.selectedFontVariant}
                             onChange={this.handleChangeFontVariant}
                             options={this.props.fontVariants}
+                            disabled={this.state.disabledFontVarians}
                             clearable={this.state.clearable}
                             placeholder="Select Font Variants"
                         />
