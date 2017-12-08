@@ -40,38 +40,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-
-    fetchGoolgeFonts().then((x)=>{
-      console.log(x)
-    })
-
-    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDUYZ9Phtnc_OpfFd39Ri-eQoxbfvcwUeA')
-      .then(res => res.json())
-      .then((fonts) => {
-        let fontsObject = {};
-        let propertiesToBeDeleted = ["kind", "subsets", "version", "lastModified", "files"];
-        let category = "";
-        let categoryArray = ["All Category"];
-
-        fonts.items.map((font) => {
-          propertiesToBeDeleted.map((d) => delete font[d]);
-          category = font.category;
-          categoryArray.push(category);
-
-          fontsObject[category] ? fontsObject[category].push({ ...font }) : fontsObject[category] = [{ ...font }]
-          return fontsObject;
-        })
-        this.setState({
-          googleFonts: fontsObject,
-          availableCategories: this.__mappedCategoryArray(categoryArray),
-          availableFontFamilies: this.__getFontsCategorySpecific("All Category")
-        })
-      });
+    fetchGoolgeFonts().then((res) => {
+      console.log(res.fonts)
+      this.setState({
+        googleFonts: res.fonts,
+        availableCategories: this.__mappedCategoryArray(res.categories),
+        availableFontFamilies: res.fonts["All Category"]
+      })
+    });
   }
 
   __mappedCategoryArray(arr) {
-    let uniqValues = _uniq(arr);
-    return uniqValues.map((val) => {
+    return arr.map((val) => {
       return ({
         name: val,
         isActive: val === "All Category" ? true : false,
@@ -80,7 +60,28 @@ class App extends Component {
     })
   }
 
-  __getFontsCategorySpecific(categoryName) {
+  handleClickOnCategory(event) {
+    let categoryName = event.target.dataset.category;
+    let availableCategories = _cloneDeep(this.state.availableCategories);
+
+    availableCategories.map((category) => {
+      category.isActive = category.name === categoryName ? true : false;
+    });
+
+    this.setState({
+      availableCategories,
+      availableFontFamilies: this.state.googleFonts[categoryName]
+    })
+  }
+
+  handleChangeFontFamily(selectedFontFamily) {
+    this.setState({
+      selectedFontFamily: selectedFontFamily.value,
+      availableFontVariants: this.__getVariantsFamilySpecific(selectedFontFamily.value)
+    })
+  }
+
+  /*__getFontsCategorySpecific(categoryName) {
     return categoryName === "All Category" ? "" : this.state.googleFonts[categoryName].map((f) => {
       return ({
         value: f.family,
@@ -88,37 +89,11 @@ class App extends Component {
         variants: f.variants
       })
     })
-  }
+  }*/
 
   __getVariantsFamilySpecific(family) {
-    let availableFontVariants = _cloneDeep(this.state.availableFontFamilies)
-    let filteredVariants = availableFontVariants.filter(x => x.value === family)[0].variants;
-    let mappedVariants = filteredVariants.map((v) => {
-      return ({
-        value: v,
-        label: v
-      })
-    })
-    return mappedVariants
-  }
-
-  handleClickOnCategory(event) {
-    let categoryName = event.target.dataset.category;
-    let availableCategories = _cloneDeep(this.state.availableCategories)
-    availableCategories.map((category) => {
-      category.isActive = category.name === categoryName ? true : false;
-    });
-    this.setState({
-      availableCategories,
-      availableFontFamilies: this.__getFontsCategorySpecific(categoryName)
-    })
-  }
-
-  handleChangeFontFamily(selectedFontFamily) {
-    this.setState({
-      selectedFontFamily: (selectedFontFamily && selectedFontFamily.value) || "Oswald",
-      availableFontVariants: selectedFontFamily && this.__getVariantsFamilySpecific(selectedFontFamily.value)
-    })
+    let availableFontVariants = _cloneDeep(this.state.availableFontFamilies);
+    return availableFontVariants.filter(x => x.value === family)[0].variants;
   }
 
   handleChangeFontVariant(selectedFontVariant) {
@@ -129,7 +104,7 @@ class App extends Component {
 
   handleChangeColor(color) {
 
-    console.log("sdds",color)
+    console.log("sdds", color)
     this.setState({ foreGroundColor: color.rgb })
   }
 
