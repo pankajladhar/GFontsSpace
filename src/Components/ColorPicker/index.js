@@ -9,7 +9,7 @@ class ColorPicker extends Component {
         super(props);
         this.state = {
             color: this.props.color,
-            displayColorPicker: false
+            displayColorPicker: false,
         }
         this.handOnClick = this.handOnClick.bind(this);
         this.handOnChange = this.handOnChange.bind(this);
@@ -49,7 +49,7 @@ class ColorPicker extends Component {
     render() {
         return (
             <div className="ColorPicker">
-                <div className="ColorPicker__Swatch" onClick={this.handOnClick}>
+                <div className={`${this.state.displayColorPicker ? "is-focused ": ""}ColorPicker__Swatch`} onClick={this.handOnClick}>
                     <div className="ColorPicker__Color" style={this.__getStyleObject(this.props.isBackgroundColorPicker)}>
                         {!this.props.isBackgroundColorPicker && "A"}
                     </div>

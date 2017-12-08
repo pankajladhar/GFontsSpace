@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "prop-types": "^15.6.0",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
     "react-click-outside": "^3.0.0",

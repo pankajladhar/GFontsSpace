@@ -98,7 +98,8 @@ class FontOptionContainer extends Component {
                             placeholder="Select Font Variants"
                         />
                         <div className="OtherProperties">
-                            <div className="FontSize__Option">
+                            <div className="FontSize__Option OtherProperties__Option">
+                                <label>Font size</label>
                                 <input type="number"
                                     name="quantity"
                                     min="9"
@@ -106,12 +107,14 @@ class FontOptionContainer extends Component {
                                     onChange={this.handleChangeFontSize}
                                     value={this.state.selectedFontSize} />
                             </div>
-                            <div className="ColorOption__ForeGround">
+                            <div className="ColorOption__ForeGround OtherProperties__Option">
+                                <label>Text Color</label>
                                 <ColorPicker color={this.props.color}
                                     handleChangeColor={this.props.handleChangeColor}
                                 />
                             </div>
-                            <div className="ColorOption__BackGround">
+                            <div className="ColorOption__BackGround OtherProperties__Option">
+                                <label>Background Color</label>
                                 <ColorPicker color={this.props.bgColor}
                                     isBackgroundColorPicker
                                 />

@@ -23,10 +23,10 @@ let __getMappedValueLabelObj = (obj) => {
 }
 
 let fetchGoolgeFonts = () => {
-    let fontsObject = { "All Category": [] };
+    let fontsObject = { "All": [] };
     let propertiesToBeDeleted = ["kind", "subsets", "version", "lastModified", "files"];
     let category = "";
-    let categoryArray = ["All Category"];
+    let categoryArray = ["All"];
     return fetch(URL)
         .then((res) => {
             return res.json()
@@ -36,7 +36,7 @@ let fetchGoolgeFonts = () => {
                 propertiesToBeDeleted.map((d) => delete font[d]);
                 category = font.category;
                 categoryArray.push(category)
-                fontsObject["All Category"].push(__getMappedValueLabelObj(font));
+                fontsObject["All"].push(__getMappedValueLabelObj(font));
                 fontsObject[category] ? fontsObject[category].push(__getMappedValueLabelObj(font)) : fontsObject[category] = [__getMappedValueLabelObj(font)]
             });
 

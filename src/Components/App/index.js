@@ -45,7 +45,7 @@ class App extends Component {
       this.setState({
         googleFonts: res.fonts,
         availableCategories: this.__mappedCategoryArray(res.categories),
-        availableFontFamilies: res.fonts["All Category"]
+        availableFontFamilies: res.fonts["All"]
       })
     });
   }
@@ -54,7 +54,7 @@ class App extends Component {
     return arr.map((val) => {
       return ({
         name: val,
-        isActive: val === "All Category" ? true : false,
+        isActive: val === "All" ? true : false,
         handleClickOnCategory: this.handleClickOnCategory,
       })
     })
