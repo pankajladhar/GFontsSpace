@@ -35,64 +35,7 @@ exports[`TextBox renders correctly 1`] = `
           "color": "rgba(0, 0, 0, 1)",
           "fontFamily": "'Oswald', sans-serif",
           "fontSize": "40px",
-          "fontWeight": 400,
-        }
-      }
-    />
-  </div>
-  <div
-    className="TextBox__CTA"
-  >
-    <button
-      className="HowToUse"
-      onClick={[Function]}
-      type="button"
-    >
-      <i
-        aria-hidden="true"
-        className="fa fa-code"
-      />
-      How to use
-    </button>
-  </div>
-</div>
-`;
-
-exports[`TextBox renders correctly with how to use section data 1`] = `
-<div
-  className="TextBox"
->
-  <div
-    className="TextBox__TextArea"
-  >
-    <ul
-      className="Texbx__FontDetails"
-    >
-      <li
-        className="FontsDetails__Item FontsDetails__Item--FontFamily"
-      >
-        Oswald
-      </li>
-      <li
-        className="FontsDetails__Item FontsDetails__Item--FontVariant"
-      >
-        Regular
-      </li>
-      <li
-        className="FontsDetails__Item FontsDetails__Item--FontSize"
-      >
-        40
-        px
-      </li>
-    </ul>
-    <textarea
-      autoFocus={true}
-      placeholder="Write Something ..."
-      style={
-        Object {
-          "color": "rgba(0, 0, 0, 1)",
-          "fontFamily": "'Oswald', sans-serif",
-          "fontSize": "40px",
+          "fontStyle": "normal",
           "fontWeight": 400,
         }
       }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside';
 import TabContainer from './../TabContainer';
+import { getFontWeightAndSyle }from './../../Helper';
 import './TextBox.css';
 
 class TextBox extends Component {
@@ -22,16 +23,14 @@ class TextBox extends Component {
         this.setState({ isHowToUseTabVisible: false })
     }
 
-    __getFontWeight(x) {
-        return x.toLowerCase() === "regular" ?  400 : x
-    }
 
     render() {
-        
+
         const textAreaStyle = {
             fontFamily: `'${this.props.fontName}', sans-serif`,
             fontSize: `${this.props.fontSize}px`,
-            fontWeight: this.__getFontWeight(this.props.fontVariant),
+            fontWeight: getFontWeightAndSyle(this.props.fontVariant).fontWeight,
+            fontStyle: getFontWeightAndSyle(this.props.fontVariant).fontStyle,
             color: `rgba(${this.props.color.r}, ${this.props.color.g}, ${this.props.color.b}, ${this.props.color.a})`,
         }
         
