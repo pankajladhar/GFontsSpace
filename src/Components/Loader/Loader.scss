@@ -1,0 +1,65 @@
+.Loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  .Loader__Overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .Loader__Wrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)
+  }
+
+  .Loader__section {
+    width: 25px;
+    height: 25px;
+    animation: loading 1s linear infinite;
+  }
+
+  .Loader__section:nth-child(1) {
+    background: #FFDE00;
+    animation-delay: 0;
+  }
+
+  .Loader__section:nth-child(2) {
+    background: #000;
+    animation-delay: 0.25s;
+  }
+
+  .Loader__section:nth-child(3) {
+    background: #000;
+    animation-delay: .75s;
+  }
+
+  .Loader__section:nth-child(4) {
+    background: #FFDE00;
+    animation-delay: .50s;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+ 

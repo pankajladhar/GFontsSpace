@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker renders correctly 1`] = `
+<div
+  className="Loader"
+>
+  <div
+    className="Loader__Overlay"
+  />
+  <div
+    className="Loader__Wrapper"
+  >
+    <div
+      className="Loader__section"
+    />
+    <div
+      className="Loader__section"
+    />
+    <div
+      className="Loader__section"
+    />
+    <div
+      className="Loader__section"
+    />
+  </div>
+</div>
+`;

@@ -5,6 +5,7 @@ import _cloneDeep from 'lodash/cloneDeep';
 import { fetchGoolgeFonts } from './../../Mapper';
 import FontOptionContainer from './../FontOptionContainer';
 import TextBox from './../TextBox';
+import Loader from './../Loader';
 import Header from './../Header';
 import './App.css';
 
@@ -123,6 +124,7 @@ class App extends Component {
               color={this.state.foreGroundColor} />
             {/* <TextBox /> */}
           </div>
+          {/* <Loader /> */}
         </section>
       </div>
     );
