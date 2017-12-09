@@ -50,7 +50,7 @@ class TextBox extends Component {
                         <i className="fa fa-plus" aria-hidden="true"></i>
                         Compare
                     </button> */}
-                    <button type="button" onClick={this.handleClickOnHowToUse}>
+                    <button className="HowToUse" type="button" onClick={this.handleClickOnHowToUse}>
                         <i className="fa fa-code" aria-hidden="true"></i>
                         How to use
                     </button>

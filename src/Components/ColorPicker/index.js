@@ -68,7 +68,8 @@ class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-
+    isBackgroundColorPicker: PropTypes.bool,
+    handleChangeColor: PropTypes.func
 };
 
 export default enhanceWithClickOutside(ColorPicker);

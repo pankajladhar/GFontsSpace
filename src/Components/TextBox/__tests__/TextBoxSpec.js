@@ -1,11 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import TextBox from './../index';
 
 describe('TextBox', () => {
-    it('renders correctly', () => {
-        const textBoxProps = {
+    let textBoxProps;
+    beforeEach(()=>{
+        textBoxProps = {
             fontName: "Oswald",
             fontVariant: "Regular",
             fontSize: "40",
@@ -16,9 +17,21 @@ describe('TextBox', () => {
                 a: '1',
               }
         }
+    })
+    it('renders correctly', () => {
         let tree = renderer.create(
             <TextBox {...textBoxProps} />
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
+
+    it('should toggle isHowToUseTabVisible on how to use btn click', ()=>{
+        let wrapper = shallow(<TextBox {...textBoxProps} />).first().shallow();
+        let elm = wrapper.find('.HowToUse');
+        elm.simulate("click");
+        expect(wrapper.instance().state.isHowToUseTabVisible).toBeTruthy()
+        elm.simulate("click");
+        expect(wrapper.instance().state.isHowToUseTabVisible).toBeFalsy()
+
+    })
 });
