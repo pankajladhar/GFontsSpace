@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "fetch-mock": "^5.13.1",
     "prop-types": "^15.6.0",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.2.0"

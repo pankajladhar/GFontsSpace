@@ -38,7 +38,7 @@ exports[`Header renders correctly 1`] = `
       </a>
       <a
         className="App__SocialIcons__Link"
-        href=""
+        href="https://github.com/pankajladhar/GFontsSpace"
         rel="noopener noreferrer"
         target="_blank"
         title="Pankaj Ladhar github profile "

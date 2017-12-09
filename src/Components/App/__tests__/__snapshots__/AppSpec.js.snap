@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="Header"
+  >
+    <header
+      className="App__header"
+    >
+      <a
+        className="App__Logo"
+        href="/"
+      >
+        <span
+          className="App__Logo--First"
+        >
+          GFonts
+        </span>
+        <span
+          className="App__Logo--Last"
+        >
+          Space
+        </span>
+      </a>
+      <div
+        className="App__SocialIcons"
+      >
+        <a
+          className="App__SocialIcons__Link"
+          href="https://www.linkedin.com/in/pankaj-ladhar-51781137/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Pankaj Ladhar linkedin profile "
+        >
+          <i
+            className="fa fa-linkedin"
+          />
+        </a>
+        <a
+          className="App__SocialIcons__Link"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Pankaj Ladhar github profile "
+        >
+          <i
+            className="fa fa-github"
+          />
+        </a>
+      </div>
+    </header>
+  </div>
+  <section
+    className="Wrapper"
+  >
+    <section
+      className="FontOptionContainer"
+    >
+      <section
+        className="FontOptionContainer__Item"
+      >
+        <h4
+          className="FontOptionContainer__Title"
+        >
+          Classification
+        </h4>
+        <ul />
+      </section>
+      <section
+        className="FontOptionContainer__Item"
+      >
+        <h4
+          className="FontOptionContainer__Title"
+        >
+          Propeties
+        </h4>
+        <div
+          className="FontOptionContainer__Properties"
+        >
+          <div
+            className="Select Select--single is-clearable is-searchable"
+            style={undefined}
+          >
+            <div
+              className="Select-control"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              style={undefined}
+            >
+              <span
+                className="Select-multi-value-wrapper"
+                id="react-select-2--value"
+              >
+                <div
+                  className="Select-placeholder"
+                >
+                  Select Font Family
+                </div>
+                <div
+                  className="Select-input"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
+                    aria-activedescendant="react-select-2--value"
+                    aria-describedby={undefined}
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-label={undefined}
+                    aria-labelledby={undefined}
+                    aria-owns=""
+                    className={undefined}
+                    id={undefined}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    tabIndex={undefined}
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </span>
+              <span
+                className="Select-arrow-zone"
+                onMouseDown={[Function]}
+              >
+                <span
+                  className="Select-arrow"
+                  onMouseDown={[Function]}
+                />
+              </span>
+            </div>
+          </div>
+          <div
+            className="Select Select--single is-disabled is-searchable"
+            style={undefined}
+          >
+            <div
+              className="Select-control"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              style={undefined}
+            >
+              <span
+                className="Select-multi-value-wrapper"
+                id="react-select-3--value"
+              >
+                <div
+                  className="Select-placeholder"
+                >
+                  Select Font Variants
+                </div>
+                <div
+                  aria-activedescendant="react-select-3--value"
+                  aria-disabled="true"
+                  aria-expanded={false}
+                  aria-label={undefined}
+                  aria-labelledby={undefined}
+                  aria-owns=""
+                  className="Select-input"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  role="combobox"
+                  style={
+                    Object {
+                      "border": 0,
+                      "display": "inline-block",
+                      "width": 1,
+                    }
+                  }
+                  tabIndex={0}
+                />
+              </span>
+              <span
+                className="Select-arrow-zone"
+                onMouseDown={[Function]}
+              >
+                <span
+                  className="Select-arrow"
+                  onMouseDown={[Function]}
+                />
+              </span>
+            </div>
+          </div>
+          <div
+            className="OtherProperties"
+          >
+            <div
+              className="FontSize__Option OtherProperties__Option"
+            >
+              <label>
+                Font size
+              </label>
+              <input
+                max="248"
+                min="9"
+                name="quantity"
+                onChange={[Function]}
+                type="number"
+                value={40}
+              />
+            </div>
+            <div
+              className="ColorOption__ForeGround OtherProperties__Option"
+            >
+              <label>
+                Text Color
+              </label>
+              <div
+                className="ColorPicker"
+              >
+                <div
+                  className="ColorPicker__Swatch"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="ColorPicker__Color"
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 1)",
+                      }
+                    }
+                  >
+                    A
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="ColorOption__BackGround OtherProperties__Option"
+            >
+              <label>
+                Background Color
+              </label>
+              <div
+                className="ColorPicker"
+              >
+                <div
+                  className="ColorPicker__Swatch"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="ColorPicker__Color"
+                    style={
+                      Object {
+                        "backgroundColor": "rgba(255, 255, 255, 1)",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <div
+      className="TexBoxContainer"
+    >
+      <div
+        className="TextBox"
+      >
+        <div
+          className="TextBox__TextArea"
+        >
+          <ul
+            className="Texbx__FontDetails"
+          >
+            <li
+              className="FontsDetails__Item FontsDetails__Item--FontFamily"
+            >
+              Oswald
+            </li>
+            <li
+              className="FontsDetails__Item FontsDetails__Item--FontVariant"
+            >
+              Regular
+            </li>
+            <li
+              className="FontsDetails__Item FontsDetails__Item--FontSize"
+            >
+              40
+              px
+            </li>
+          </ul>
+          <textarea
+            autoFocus={true}
+            placeholder="Write Something ..."
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 1)",
+                "fontFamily": "'Oswald', sans-serif",
+                "fontSize": "40px",
+                "fontWeight": 400,
+              }
+            }
+          />
+        </div>
+        <div
+          className="TextBox__CTA"
+        >
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-code"
+            />
+            How to use
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

@@ -116,7 +116,7 @@ exports[`FontOptionContainer renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="Select Select--single is-clearable is-searchable"
+        className="Select Select--single is-disabled is-searchable"
         style={undefined}
       >
         <div
@@ -138,53 +138,25 @@ exports[`FontOptionContainer renders correctly 1`] = `
               Select Font Variants
             </div>
             <div
+              aria-activedescendant="react-select-3--value"
+              aria-disabled="true"
+              aria-expanded={false}
+              aria-label={undefined}
+              aria-labelledby={undefined}
+              aria-owns=""
               className="Select-input"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              role="combobox"
               style={
                 Object {
+                  "border": 0,
                   "display": "inline-block",
+                  "width": 1,
                 }
               }
-            >
-              <input
-                aria-activedescendant="react-select-3--value"
-                aria-describedby={undefined}
-                aria-expanded="false"
-                aria-haspopup="false"
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-owns=""
-                className={undefined}
-                id={undefined}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                role="combobox"
-                style={
-                  Object {
-                    "boxSizing": "content-box",
-                    "width": "5px",
-                  }
-                }
-                tabIndex={undefined}
-                value=""
-              />
-              <div
-                style={
-                  Object {
-                    "height": 0,
-                    "left": 0,
-                    "overflow": "scroll",
-                    "position": "absolute",
-                    "top": 0,
-                    "visibility": "hidden",
-                    "whiteSpace": "pre",
-                  }
-                }
-              >
-                
-              </div>
-            </div>
+              tabIndex={0}
+            />
           </span>
           <span
             className="Select-arrow-zone"
@@ -201,19 +173,26 @@ exports[`FontOptionContainer renders correctly 1`] = `
         className="OtherProperties"
       >
         <div
-          className="FontSize__Option"
+          className="FontSize__Option OtherProperties__Option"
         >
+          <label>
+            Font size
+          </label>
           <input
             max="248"
-            min="6"
+            min="9"
             name="quantity"
+            onChange={[Function]}
             type="number"
-            value="16"
+            value={40}
           />
         </div>
         <div
-          className="ColorOption__ForeGround"
+          className="ColorOption__ForeGround OtherProperties__Option"
         >
+          <label>
+            Text Color
+          </label>
           <div
             className="ColorPicker"
           >
@@ -235,8 +214,11 @@ exports[`FontOptionContainer renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="ColorOption__BackGround"
+          className="ColorOption__BackGround OtherProperties__Option"
         >
+          <label>
+            Background Color
+          </label>
           <div
             className="ColorPicker"
           >

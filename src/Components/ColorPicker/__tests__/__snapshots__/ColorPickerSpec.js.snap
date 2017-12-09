@@ -1,6 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorPicker renders correctly 1`] = `
+exports[`ColorPicker renders correctly with bgColor objct 1`] = `
+<div
+  className="ColorPicker"
+>
+  <div
+    className="ColorPicker__Swatch"
+    onClick={[Function]}
+  >
+    <div
+      className="ColorPicker__Color"
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 1)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ColorPicker renders correctly with color objct 1`] = `
 <div
   className="ColorPicker"
 >

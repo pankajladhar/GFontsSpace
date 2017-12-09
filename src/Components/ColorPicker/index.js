@@ -11,22 +11,24 @@ class ColorPicker extends Component {
             color: this.props.color,
             displayColorPicker: false,
         }
-        this.handOnClick = this.handOnClick.bind(this);
-        this.handOnChange = this.handOnChange.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handOnClick() {
+    handleOnClick() {
         this.setState({ displayColorPicker: !this.state.displayColorPicker })
     }
 
-    handOnChange(color) {
-        this.setState({ color: color.rgb },()=>{
-            if(this.props.isBackgroundColorPicker )
+    handleOnChange(color) {
+        this.setState({ color: color.rgb }, () => {
+            if (this.props.isBackgroundColorPicker) {
                 document.body.style.backgroundColor = `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`;
-            else 
+            }
+
+            else {
                 this.props.handleChangeColor(color)
+            }
         })
-        // this.props.handOnChange()
     }
 
     handleClickOutside() {
@@ -49,14 +51,14 @@ class ColorPicker extends Component {
     render() {
         return (
             <div className="ColorPicker">
-                <div className={`${this.state.displayColorPicker ? "is-focused ": ""}ColorPicker__Swatch`} onClick={this.handOnClick}>
+                <div className={`${this.state.displayColorPicker ? "is-focused " : ""}ColorPicker__Swatch`} onClick={this.handleOnClick}>
                     <div className="ColorPicker__Color" style={this.__getStyleObject(this.props.isBackgroundColorPicker)}>
                         {!this.props.isBackgroundColorPicker && "A"}
                     </div>
                 </div>
                 {this.state.displayColorPicker ?
                     <div className="ColorPicker__Popover">
-                        <SketchPicker color={this.state.color} onChange={this.handOnChange} />
+                        <SketchPicker color={this.state.color} onChange={this.handleOnChange} />
                     </div> :
                     null}
 
