@@ -2,7 +2,7 @@
 
 exports[`FontOptionContainer renders correctly 1`] = `
 <section
-  className="FontOptionContainer"
+  className="undefined FontOptionContainer"
 >
   <section
     className="FontOptionContainer__Item"

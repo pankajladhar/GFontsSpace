@@ -20,6 +20,7 @@ class App extends Component {
       selectedFontFamily: "Oswald",
       selectedFontVariant: "Regular",
       selectedFontSize: "40",
+      isHideControl: false,
       foreGroundColor: {
         r: '0',
         g: '0',
@@ -39,6 +40,7 @@ class App extends Component {
     this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.handleClickOnControlBtn = this.handleClickOnControlBtn.bind(this);
   }
 
   componentDidMount() {
@@ -101,10 +103,14 @@ class App extends Component {
     this.setState({ selectedFontSize })
   }
 
+  handleClickOnControlBtn() {
+    this.setState({ isHideControl: !this.state.isHideControl });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header className={this.state.isHideControl ? "HideControl" : "ShowControl"}/>
         <section className="Wrapper">
           <FontOptionContainer
             categories={this.state.availableCategories}
@@ -116,6 +122,7 @@ class App extends Component {
             color={this.state.foreGroundColor}
             handleChangeColor={this.handleChangeColor}
             bgColor={this.state.backGroundColor}
+            className={this.state.isHideControl ? "HideControl" : "ShowControl"}
           />
           <div className="TexBoxContainer">
             <TextBox fontName={this.state.selectedFontFamily}
@@ -125,6 +132,11 @@ class App extends Component {
             {/* <TextBox /> */}
           </div>
           {/* <Loader /> */}
+          <button type="button"
+            onClick={this.handleClickOnControlBtn}
+            className="App__Btn">
+            {this.state.isHideControl ? "Show Control" : "Hide Control"}
+          </button>
         </section>
       </div>
     );

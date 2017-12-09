@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <header className="App__header">
+                <header className={`${this.props.className} App__header`}>
                     <a href="/" className="App__Logo">
                         <span className="App__Logo--First">GFonts</span>
                         <span className="App__Logo--Last">Space</span>

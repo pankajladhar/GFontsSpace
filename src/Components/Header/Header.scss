@@ -3,6 +3,11 @@
     top: 25px;
     position: fixed;
     left: 0;
+
+    &.HideControl {
+      left: -160px;
+      transition: all .3s ease-out;
+    }
   }
   
   .App__Logo {

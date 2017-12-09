@@ -2,6 +2,9 @@
   top: 25px;
   position: fixed;
   left: 0; }
+  .Header .App__header.HideControl {
+    left: -160px;
+    transition: all .3s ease-out; }
 
 .Header .App__Logo {
   color: #000;
