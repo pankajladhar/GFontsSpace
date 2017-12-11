@@ -5,7 +5,7 @@ exports[`Header renders correctly 1`] = `
   className="Header"
 >
   <header
-    className="undefined App__header"
+    className="App__header"
   >
     <a
       className="App__Logo"

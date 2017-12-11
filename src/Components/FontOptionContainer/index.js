@@ -61,7 +61,7 @@ class FontOptionContainer extends Component {
 
     render() {
         return (
-            <section className={`${this.props.className} FontOptionContainer`}>
+            <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
                     <h4 className="FontOptionContainer__Title">Classification</h4>
                     <ul>

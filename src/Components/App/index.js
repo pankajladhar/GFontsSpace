@@ -56,7 +56,6 @@ class App extends Component {
       fontName: this.state.selectedFontFamily,
       fontVariant: this.state.selectedFontVariant,
       fontSize:this.state.selectedFontSize,
-      className: this.state.isHideControl ? "HideControl" : "ShowControl",
       color: this.state.foreGroundColor,
       onFocus: this.handleFocusOnTextBox
     });
@@ -86,7 +85,6 @@ class App extends Component {
       fontName: this.state.selectedFontFamily,
       fontVariant: this.state.selectedFontVariant,
       fontSize:this.state.selectedFontSize,
-      className: this.state.isHideControl ? "HideControl" : "ShowControl",
       color: this.state.foreGroundColor,
       onFocus: this.handleFocusOnTextBox,
     });
@@ -170,10 +168,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.state.isHideControl ? "HideControl" : "ShowControl"}>
         {this.state.googleFonts.length == 0 ? <Loader /> :
           <div className="App">
-            <Header className={this.state.isHideControl ? "HideControl" : "ShowControl"} />
+            <Header />
             <section className="Wrapper">
               <FontOptionContainer
                 categories={this.state.availableCategories}
@@ -185,7 +183,6 @@ class App extends Component {
                 color={this.state.foreGroundColor}
                 handleChangeColor={this.handleChangeColor}
                 bgColor={this.state.backGroundColor}
-                className={this.state.isHideControl ? "HideControl" : "ShowControl"}
               />
               <div className="TexBoxContainerWrapper">
                 <TextBoxContainer textBoxes={this.state.textBoxes} 

@@ -26,3 +26,12 @@
 
 .App-intro {
   display: none; }
+
+.HideControl .Header .App__header {
+  left: -160px; }
+
+.HideControl .TextBox .TextBox__CTA {
+  display: none; }
+
+.HideControl .FontOptionContainer {
+  right: -250px; }

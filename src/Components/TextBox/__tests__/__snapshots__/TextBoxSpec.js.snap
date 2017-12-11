@@ -2,7 +2,7 @@
 
 exports[`TextBox renders correctly 1`] = `
 <div
-  className="undefined TextBox"
+  className="TextBox"
 >
   <div
     className="TextBox__TextArea"
@@ -28,7 +28,7 @@ exports[`TextBox renders correctly 1`] = `
       </li>
     </ul>
     <textarea
-      autoFocus={true}
+      onFocus={[Function]}
       placeholder="Write Something ..."
       style={
         Object {
@@ -44,6 +44,16 @@ exports[`TextBox renders correctly 1`] = `
   <div
     className="TextBox__CTA"
   >
+    <button
+      onClick={undefined}
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-plus"
+      />
+      Compare
+    </button>
     <button
       className="HowToUse"
       onClick={[Function]}
