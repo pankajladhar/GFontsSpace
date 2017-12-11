@@ -5,6 +5,11 @@ then
     rm -rf static
 fi
 
+if [ -d "./fonts" ]
+then
+    rm -rf fonts
+fi
+
 mv ./build/index.html index.html
 mv ./build/favicon.ico favicon.ico
 mv ./build/asset-manifest.json asset-manifest.json
