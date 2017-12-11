@@ -109,36 +109,39 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header className={this.state.isHideControl ? "HideControl" : "ShowControl"}/>
-        <section className="Wrapper">
-          <FontOptionContainer
-            categories={this.state.availableCategories}
-            fontFamilies={this.state.availableFontFamilies}
-            handleChangeFontFamily={this.handleChangeFontFamily}
-            fontVariants={this.state.availableFontVariants}
-            handleChangeFontVariant={this.handleChangeFontVariant}
-            handleChangeFontSize={this.handleChangeFontSize}
-            color={this.state.foreGroundColor}
-            handleChangeColor={this.handleChangeColor}
-            bgColor={this.state.backGroundColor}
-            className={this.state.isHideControl ? "HideControl" : "ShowControl"}
-          />
-          <div className="TexBoxContainer">
-            <TextBox fontName={this.state.selectedFontFamily}
-              fontVariant={this.state.selectedFontVariant}
-              fontSize={this.state.selectedFontSize}
-              className={this.state.isHideControl ? "HideControl" : "ShowControl"}
-              color={this.state.foreGroundColor} />
-            {/* <TextBox /> */}
+      <div>
+        {this.state.googleFonts.length == 0 ? <Loader /> :
+          <div className="App">
+            <Header className={this.state.isHideControl ? "HideControl" : "ShowControl"} />
+            <section className="Wrapper">
+              <FontOptionContainer
+                categories={this.state.availableCategories}
+                fontFamilies={this.state.availableFontFamilies}
+                handleChangeFontFamily={this.handleChangeFontFamily}
+                fontVariants={this.state.availableFontVariants}
+                handleChangeFontVariant={this.handleChangeFontVariant}
+                handleChangeFontSize={this.handleChangeFontSize}
+                color={this.state.foreGroundColor}
+                handleChangeColor={this.handleChangeColor}
+                bgColor={this.state.backGroundColor}
+                className={this.state.isHideControl ? "HideControl" : "ShowControl"}
+              />
+              <div className="TexBoxContainer">
+                <TextBox fontName={this.state.selectedFontFamily}
+                  fontVariant={this.state.selectedFontVariant}
+                  fontSize={this.state.selectedFontSize}
+                  className={this.state.isHideControl ? "HideControl" : "ShowControl"}
+                  color={this.state.foreGroundColor} />
+                {/* <TextBox /> */}
+              </div>
+              <button type="button"
+                onClick={this.handleClickOnControlBtn}
+                className="App__Btn">
+                {this.state.isHideControl ? "Show Control" : "Hide Control"}
+              </button>
+            </section>
           </div>
-          {/* <Loader /> */}
-          <button type="button"
-            onClick={this.handleClickOnControlBtn}
-            className="App__Btn">
-            {this.state.isHideControl ? "Show Control" : "Hide Control"}
-          </button>
-        </section>
+        }
       </div>
     );
   }
