@@ -42,7 +42,8 @@
     background: #FFDE00;
     font-size: 30px;
     padding: 5px 8px;
-    transition: background .3s ease-out; }
+    transition: background .3s ease-out;
+    color: #000; }
     .Header .App__SocialIcons .App__SocialIcons__Link:hover {
       background: #000;
       color: #fff; }
