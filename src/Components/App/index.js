@@ -128,6 +128,7 @@ class App extends Component {
             <TextBox fontName={this.state.selectedFontFamily}
               fontVariant={this.state.selectedFontVariant}
               fontSize={this.state.selectedFontSize}
+              className={this.state.isHideControl ? "HideControl" : "ShowControl"}
               color={this.state.foreGroundColor} />
             {/* <TextBox /> */}
           </div>

@@ -35,7 +35,7 @@ class TextBox extends Component {
         }
         
         return (
-            <div className="TextBox">
+            <div className={`${this.props.className} TextBox`}>
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
                         <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontName}</li>

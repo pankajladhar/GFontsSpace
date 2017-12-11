@@ -19,12 +19,20 @@
       margin-bottom: 10px;
     }
 
-    pre {
+    .Info-Font {
       font-family: inherit;
       background: rgba(226, 225, 215, 0.6);
       padding: 15px 10px;
       margin-bottom: 0;
       margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .fa {
+        margin-left: 10px;
+        cursor: pointer;
+      }
     }
 
     .Link {

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CopyContent renders correctly 1`] = `
+<div
+  className="CopyContent"
+>
+  <i
+    className="fa fa-copy"
+    data-item="Some Content"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+  />
+  <span
+    className="CopyContent__TitlePopUp"
+  >
+    Click to Copy
+  </span>
+</div>
+`;

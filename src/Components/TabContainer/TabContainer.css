@@ -11,12 +11,18 @@
     .TabContainer .TabContainer__Tab--Content h4 {
       font-size: 16px;
       margin-bottom: 10px; }
-    .TabContainer .TabContainer__Tab--Content pre {
+    .TabContainer .TabContainer__Tab--Content .Info-Font {
       font-family: inherit;
       background: rgba(226, 225, 215, 0.6);
       padding: 15px 10px;
       margin-bottom: 0;
-      margin-top: 10px; }
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .TabContainer .TabContainer__Tab--Content .Info-Font .fa {
+        margin-left: 10px;
+        cursor: pointer; }
     .TabContainer .TabContainer__Tab--Content .Link {
       margin-top: 20px;
       display: inline-block;

@@ -1,0 +1,28 @@
+.CopyContent {
+  position: relative;
+  .fa {
+    border: 1px #000 solid;
+    padding: 3px;
+    &:hover {
+      background: #000;
+      color: #fff;
+      + .CopyContent__TitlePopUp {
+        display: block;
+      }
+    }
+  }
+
+  .CopyContent__TitlePopUp {
+    position: absolute;
+    width: 85px;
+    top: 20px;
+    right: 0;
+    text-align: center;
+    padding: 5px 2px;
+    box-sizing: content-box;
+    background: #000;
+    color: #fff;
+    border-radius: 2px;
+    display: none;
+  }
+}

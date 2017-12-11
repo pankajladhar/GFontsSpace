@@ -2,7 +2,7 @@
 
 exports[`TextBox renders correctly 1`] = `
 <div
-  className="TextBox"
+  className="undefined TextBox"
 >
   <div
     className="TextBox__TextArea"

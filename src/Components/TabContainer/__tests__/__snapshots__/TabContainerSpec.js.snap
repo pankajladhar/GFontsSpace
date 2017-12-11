@@ -43,33 +43,73 @@ exports[`TabContainer renders correctly 1`] = `
       id="react-tabs-1"
       role="tabpanel"
     >
-      <p
+      <div
         className="TabContainer__Tab--Content"
       >
         <h4>
           Embed Font
         </h4>
         To embed your selected fonts into a webpage, copy this code into the &lt;head&gt; of your HTML document.
-        <pre>
-          &lt;link href="https://fonts.googleapis.com/css?family=
-          <span
-            className="Text__bold"
-          >
-            oswald
+        <div
+          className="Info-Font"
+        >
+          <span>
+            &lt;link href="https://fonts.googleapis.com/css?family=
+            <span
+              className="Text__bold"
+            >
+              oswald
+            </span>
+            " rel="stylesheet"&gt;
           </span>
-          " rel="stylesheet"&gt;
-        </pre>
-      </p>
-      <p
+          <div
+            className="CopyContent"
+          >
+            <i
+              className="fa fa-copy"
+              data-item="<link href=\\"https://fonts.googleapis.com/css?family=oswald\\" rel=\\"stylesheet\\">"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+            />
+            <span
+              className="CopyContent__TitlePopUp"
+            >
+              Click to Copy
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
         className="TabContainer__Tab--Content"
       >
         <h4>
           Specify in CSS
         </h4>
         Use the following CSS rules to specify these families:
-        <pre>
-          font-family: 'Noto Sans', sans-serif;
-        </pre>
+        <div
+          className="Info-Font"
+        >
+          <span>
+            font-family: 
+            oswald, sans-serif
+            ;
+          </span>
+          <div
+            className="CopyContent"
+          >
+            <i
+              className="fa fa-copy"
+              data-item="font-family: oswald, sans-serif;"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+            />
+            <span
+              className="CopyContent__TitlePopUp"
+            >
+              Click to Copy
+            </span>
+          </div>
+        </div>
         <strong>
           Goolgle Fonts:
         </strong>
@@ -81,7 +121,7 @@ exports[`TabContainer renders correctly 1`] = `
           https://fonts.google.com/specimen/
           oswald
         </a>
-      </p>
+      </div>
     </div>
     <div
       aria-labelledby="react-tabs-2"
@@ -136,33 +176,73 @@ exports[`TabContainer renders correctly font-family has space 1`] = `
       id="react-tabs-5"
       role="tabpanel"
     >
-      <p
+      <div
         className="TabContainer__Tab--Content"
       >
         <h4>
           Embed Font
         </h4>
         To embed your selected fonts into a webpage, copy this code into the &lt;head&gt; of your HTML document.
-        <pre>
-          &lt;link href="https://fonts.googleapis.com/css?family=
-          <span
-            className="Text__bold"
-          >
-            some+font+family
+        <div
+          className="Info-Font"
+        >
+          <span>
+            &lt;link href="https://fonts.googleapis.com/css?family=
+            <span
+              className="Text__bold"
+            >
+              some+font+family
+            </span>
+            " rel="stylesheet"&gt;
           </span>
-          " rel="stylesheet"&gt;
-        </pre>
-      </p>
-      <p
+          <div
+            className="CopyContent"
+          >
+            <i
+              className="fa fa-copy"
+              data-item="<link href=\\"https://fonts.googleapis.com/css?family=some font family\\" rel=\\"stylesheet\\">"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+            />
+            <span
+              className="CopyContent__TitlePopUp"
+            >
+              Click to Copy
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
         className="TabContainer__Tab--Content"
       >
         <h4>
           Specify in CSS
         </h4>
         Use the following CSS rules to specify these families:
-        <pre>
-          font-family: 'Noto Sans', sans-serif;
-        </pre>
+        <div
+          className="Info-Font"
+        >
+          <span>
+            font-family: 
+            some font family, sans-serif
+            ;
+          </span>
+          <div
+            className="CopyContent"
+          >
+            <i
+              className="fa fa-copy"
+              data-item="font-family: some font family, sans-serif;"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+            />
+            <span
+              className="CopyContent__TitlePopUp"
+            >
+              Click to Copy
+            </span>
+          </div>
+        </div>
         <strong>
           Goolgle Fonts:
         </strong>
@@ -174,7 +254,7 @@ exports[`TabContainer renders correctly font-family has space 1`] = `
           https://fonts.google.com/specimen/
           some+font+family
         </a>
-      </p>
+      </div>
     </div>
     <div
       aria-labelledby="react-tabs-6"

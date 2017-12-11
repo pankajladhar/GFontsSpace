@@ -1,5 +1,7 @@
 .TextBox {
   margin-bottom: 20px; }
+  .TextBox.HideControl .TextBox__CTA {
+    display: none; }
   .TextBox:hover, .TextBox:focus {
     background-color: rgba(226, 225, 215, 0.2); }
   .TextBox .Texbx__FontDetails {

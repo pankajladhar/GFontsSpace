@@ -1,6 +1,12 @@
 .TextBox {
   margin-bottom: 20px;
 
+  &.HideControl { 
+    .TextBox__CTA {
+      display: none;
+    }
+  }
+
   &:hover, &:focus {
     background-color: rgba(226, 225, 215, 0.2);
   }
