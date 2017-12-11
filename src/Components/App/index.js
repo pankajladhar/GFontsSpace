@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import _map from 'lodash/map';
 import _uniq from 'lodash/uniq';
 import _cloneDeep from 'lodash/cloneDeep';
 import { fetchGoolgeFonts } from './../../Mapper';
 import FontOptionContainer from './../FontOptionContainer';
+import TextBoxContainer from './../TextBoxContainer';
 import TextBox from './../TextBox';
 import Loader from './../Loader';
 import Header from './../Header';
@@ -20,6 +21,7 @@ class App extends Component {
       selectedFontFamily: "Oswald",
       selectedFontVariant: "Regular",
       selectedFontSize: "40",
+      selectdTextBox: 0,
       isHideControl: false,
       foreGroundColor: {
         r: '0',
@@ -33,6 +35,7 @@ class App extends Component {
         b: '255',
         a: '1',
       },
+      textBoxes:[]
     }
 
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
@@ -41,9 +44,27 @@ class App extends Component {
     this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleClickOnControlBtn = this.handleClickOnControlBtn.bind(this);
+
+    this.handleFocusOnTextBox = this.handleFocusOnTextBox.bind(this);
+    this.handleClickOnCompareBtn = this.handleClickOnCompareBtn.bind(this);
   }
 
   componentDidMount() {
+    let x = _cloneDeep(this.state.textBoxes);
+
+    x.push({
+      fontName: this.state.selectedFontFamily,
+      fontVariant: this.state.selectedFontVariant,
+      fontSize:this.state.selectedFontSize,
+      className: this.state.isHideControl ? "HideControl" : "ShowControl",
+      color: this.state.foreGroundColor,
+      onFocus: this.handleFocusOnTextBox
+    });
+    
+    this.setState({
+      textBoxes: x
+    });
+
     fetchGoolgeFonts().then((res) => {
       this.setState({
         googleFonts: res.fonts,
@@ -51,6 +72,28 @@ class App extends Component {
         availableFontFamilies: res.fonts["All"]
       })
     });
+  }
+
+  handleFocusOnTextBox(value){
+    this.setState({
+      selectdTextBox: value
+    })
+  }
+
+  handleClickOnCompareBtn() {
+    let x = _cloneDeep(this.state.textBoxes)
+    x.push({
+      fontName: this.state.selectedFontFamily,
+      fontVariant: this.state.selectedFontVariant,
+      fontSize:this.state.selectedFontSize,
+      className: this.state.isHideControl ? "HideControl" : "ShowControl",
+      color: this.state.foreGroundColor,
+      onFocus: this.handleFocusOnTextBox,
+    });
+    console.log("sds")
+    this.setState ({
+      textBoxes : x
+    })
   }
 
   __mappedCategoryArray(arr) {
@@ -78,7 +121,11 @@ class App extends Component {
   }
 
   handleChangeFontFamily(selectedFontFamily) {
+    let x = _cloneDeep(this.state.textBoxes);
+    x[0].fontName = selectedFontFamily.value
+    
     this.setState({
+      textBoxes: x,
       selectedFontFamily: (selectedFontFamily && selectedFontFamily.value) || "Oswald",
       availableFontVariants: (selectedFontFamily && this.__getVariantsFamilySpecific(selectedFontFamily.value)) || ""
     })
@@ -90,17 +137,31 @@ class App extends Component {
   }
 
   handleChangeFontVariant(selectedFontVariant) {
+    let x = _cloneDeep(this.state.textBoxes);
+    x[this.state.selectdTextBox].fontVariant = selectedFontVariant.value
+
     this.setState({
+      textBoxes: x,
       selectedFontVariant: selectedFontVariant.value,
     })
   }
 
   handleChangeColor(color) {
-    this.setState({ foreGroundColor: color.rgb })
+    let x = _cloneDeep(this.state.textBoxes);
+    x[this.state.selectdTextBox].color = color.rgb
+    this.setState({ 
+      foreGroundColor: color.rgb,
+      textBoxes: x,
+    })
   }
 
   handleChangeFontSize(selectedFontSize) {
-    this.setState({ selectedFontSize })
+    let x = _cloneDeep(this.state.textBoxes);
+    x[this.state.selectdTextBox].fontSize = selectedFontSize
+    this.setState({ 
+      textBoxes: x,
+      selectedFontSize
+     })
   }
 
   handleClickOnControlBtn() {
@@ -126,13 +187,9 @@ class App extends Component {
                 bgColor={this.state.backGroundColor}
                 className={this.state.isHideControl ? "HideControl" : "ShowControl"}
               />
-              <div className="TexBoxContainer">
-                <TextBox fontName={this.state.selectedFontFamily}
-                  fontVariant={this.state.selectedFontVariant}
-                  fontSize={this.state.selectedFontSize}
-                  className={this.state.isHideControl ? "HideControl" : "ShowControl"}
-                  color={this.state.foreGroundColor} />
-                {/* <TextBox /> */}
+              <div className="TexBoxContainerWrapper">
+                <TextBoxContainer textBoxes={this.state.textBoxes} 
+                  handleClickOnCompareBtn={this.handleClickOnCompareBtn}/>
               </div>
               <button type="button"
                 onClick={this.handleClickOnControlBtn}

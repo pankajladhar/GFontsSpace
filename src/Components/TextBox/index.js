@@ -12,6 +12,7 @@ class TextBox extends Component {
             isHowToUseTabVisible: false
         }
         this.handleClickOnHowToUse = this.handleClickOnHowToUse.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     handleClickOnHowToUse() {
@@ -23,9 +24,12 @@ class TextBox extends Component {
         this.setState({ isHowToUseTabVisible: false })
     }
 
+    handleFocus(){
+        this.props.onFocus(this.props.dataItem)
+    }
+
 
     render() {
-
         const textAreaStyle = {
             fontFamily: `'${this.props.fontName}', sans-serif`,
             fontSize: `${this.props.fontSize}px`,
@@ -42,13 +46,15 @@ class TextBox extends Component {
                         <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant}</li>
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
-                    <textarea style={textAreaStyle} placeholder="Write Something ..." autoFocus></textarea>
+                    <textarea style={textAreaStyle}
+                        onFocus={this.handleFocus}
+                        placeholder="Write Something ..."></textarea>
                 </div>
                 <div className="TextBox__CTA">
-                    {/* <button type="button">
+                    <button type="button" onClick={this.props.handleClickOnCompareBtn}>
                         <i className="fa fa-plus" aria-hidden="true"></i>
                         Compare
-                    </button> */}
+                    </button>
                     <button className="HowToUse" type="button" onClick={this.handleClickOnHowToUse}>
                         <i className="fa fa-code" aria-hidden="true"></i>
                         How to use
