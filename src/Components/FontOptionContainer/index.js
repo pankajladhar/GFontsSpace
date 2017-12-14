@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import _map from 'lodash/map';
 import 'react-select/dist/react-select.css'
 
 import WebFont from 'webfontloader';
@@ -36,14 +37,19 @@ class FontOptionContainer extends Component {
             selectedFontFamily,
             disabledFontVarians: selectedFontFamily == null ? true : false,
             selectedFontVariant: 'regular',
-        }, () => {
+        });
+        this.props.handleChangeFontFamily(selectedFontFamily);
+
+
+        setTimeout(() => {
+            let fontToBeLoader =  `${selectedFontFamily.value}:${_map(this.props.fontVariants, "label").toString()}`
             selectedFontFamily && WebFont.load({
                 google: {
-                    families: [selectedFontFamily.value]
+                    families: [fontToBeLoader]
                 }
             });
-        });
-        this.props.handleChangeFontFamily(selectedFontFamily)
+            console.log()
+        }, 0);
     }
 
     handleChangeFontVariant(selectedFontVariant) {
