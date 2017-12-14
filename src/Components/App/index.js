@@ -120,7 +120,7 @@ class App extends Component {
 
   handleChangeFontFamily(selectedFontFamily) {
     let x = _cloneDeep(this.state.textBoxes);
-    x[0].fontName = selectedFontFamily.value
+    x[this.state.selectdTextBox].fontName = selectedFontFamily.value
     
     this.setState({
       textBoxes: x,
