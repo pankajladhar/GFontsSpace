@@ -7,7 +7,7 @@
     }
   }
 
-  &:hover, &:focus {
+  &.isActive {
     background-color: rgba(226, 225, 215, 0.2);
   }
   

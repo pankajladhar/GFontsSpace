@@ -12,7 +12,7 @@ class TextBox extends Component {
             isHowToUseTabVisible: false
         }
         this.handleClickOnHowToUse = this.handleClickOnHowToUse.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClickOnHowToUse() {
@@ -24,8 +24,8 @@ class TextBox extends Component {
         this.setState({ isHowToUseTabVisible: false })
     }
 
-    handleFocus(){
-        this.props.onFocus(this.props.dataItem)
+    handleClick(){
+        this.props.onClick(this.props.dataItem)
     }
 
 
@@ -37,17 +37,18 @@ class TextBox extends Component {
             fontStyle: getFontWeightAndSyle(this.props.fontVariant).fontStyle,
             color: `rgba(${this.props.color.r}, ${this.props.color.g}, ${this.props.color.b}, ${this.props.color.a})`,
         }
-        
         return (
-            <div className="TextBox">
+            
+            <div className={`${this.props.isActive && "isActive"} TextBox`}>
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
-                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontName}</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontFamily}</li>
                         <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant}</li>
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
                     <textarea style={textAreaStyle}
-                        onFocus={this.handleFocus}
+                        onClick={this.handleClick}
+                        autoFocus={this.props.isActive}
                         placeholder="Write Something ..."></textarea>
                 </div>
                 <div className="TextBox__CTA">

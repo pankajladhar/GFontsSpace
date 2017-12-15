@@ -23,19 +23,35 @@ class App extends Component {
       selectedFontSize: "40",
       selectdTextBox: 0,
       isHideControl: false,
-      foreGroundColor: {
-        r: '0',
-        g: '0',
-        b: '0',
-        a: '1',
-      },
       backGroundColor: {
         r: '255',
         g: '255',
         b: '255',
         a: '1',
       },
-      textBoxes:[]
+      textBoxes:[],
+      userSelected : [
+        {
+          isActive: true,
+          fontFamily: "Oswald",
+          fontVariant: "Regular",
+          fontSize: "40",
+          value:"",
+          color: {
+            r: '0',
+            g: '0',
+            b: '0',
+            a: '1',
+          },
+          backGroundColor: {
+            r: '255',
+            g: '255',
+            b: '255',
+            a: '1',
+          },
+        }
+      ],
+      userSelectedTextBox: 0,
     }
 
     this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
@@ -45,23 +61,16 @@ class App extends Component {
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleClickOnControlBtn = this.handleClickOnControlBtn.bind(this);
 
-    this.handleFocusOnTextBox = this.handleFocusOnTextBox.bind(this);
+    this.handleClickOnTextBox = this.handleClickOnTextBox.bind(this);
     this.handleClickOnCompareBtn = this.handleClickOnCompareBtn.bind(this);
   }
 
   componentDidMount() {
-    let x = _cloneDeep(this.state.textBoxes);
+    let x = _cloneDeep(this.state.userSelected);
+    x[0].onClick = this.handleClickOnTextBox;
 
-    x.push({
-      fontName: this.state.selectedFontFamily,
-      fontVariant: this.state.selectedFontVariant,
-      fontSize:this.state.selectedFontSize,
-      color: this.state.foreGroundColor,
-      onFocus: this.handleFocusOnTextBox
-    });
-    
     this.setState({
-      textBoxes: x
+      userSelected: x
     });
 
     fetchGoolgeFonts().then((res) => {
@@ -73,26 +82,6 @@ class App extends Component {
     });
   }
 
-  handleFocusOnTextBox(value){
-    this.setState({
-      selectdTextBox: value
-    })
-  }
-
-  handleClickOnCompareBtn() {
-    let x = _cloneDeep(this.state.textBoxes)
-    x.push({
-      fontName: this.state.selectedFontFamily,
-      fontVariant: this.state.selectedFontVariant,
-      fontSize:this.state.selectedFontSize,
-      color: this.state.foreGroundColor,
-      onFocus: this.handleFocusOnTextBox,
-    });
-    console.log("sds")
-    this.setState ({
-      textBoxes : x
-    })
-  }
 
   __mappedCategoryArray(arr) {
     return arr.map((val) => {
@@ -102,6 +91,47 @@ class App extends Component {
         handleClickOnCategory: this.handleClickOnCategory,
       })
     })
+  }
+  
+  __getVariantsFamilySpecific(family) {
+    let availableFontVariants = _cloneDeep(this.state.availableFontFamilies);
+    return availableFontVariants.filter(x => x.value === family)[0].variants;
+  }
+
+  handleChangeFontSize(selectedFontSize) {
+    let userSelectedClone = _cloneDeep(this.state.userSelected);
+    userSelectedClone[this.state.userSelectedTextBox].fontSize = selectedFontSize
+    this.setState({
+      userSelected : userSelectedClone
+    });
+  }
+
+  handleChangeColor(color) {
+    let userSelectedClone = _cloneDeep(this.state.userSelected);
+    userSelectedClone[this.state.userSelectedTextBox].color = color.rgb;
+
+    this.setState({
+      userSelected : userSelectedClone
+    });
+
+  }
+
+  handleClickOnTextBox(value){
+    this.setState({
+      userSelectedTextBox : value
+    })
+  }
+
+  handleClickOnCompareBtn() {
+
+    let x = _cloneDeep(this.state.userSelected);
+    // _map(x, (item)=> item.isActive = false)
+    x.push(this.state.userSelected[this.state.userSelectedTextBox])
+    x[this.state.userSelectedTextBox+1].onClick = this.handleClickOnTextBox;
+    // x[this.state.userSelectedTextBox+1].isActive = true;
+    this.setState({
+      userSelected: x
+    });
   }
 
   handleClickOnCategory(event) {
@@ -128,12 +158,7 @@ class App extends Component {
       availableFontVariants: (selectedFontFamily && this.__getVariantsFamilySpecific(selectedFontFamily.value)) || ""
     })
   }
-
-  __getVariantsFamilySpecific(family) {
-    let availableFontVariants = _cloneDeep(this.state.availableFontFamilies);
-    return availableFontVariants.filter(x => x.value === family)[0].variants;
-  }
-
+  
   handleChangeFontVariant(selectedFontVariant) {
     let x = _cloneDeep(this.state.textBoxes);
     x[this.state.selectdTextBox].fontVariant = selectedFontVariant.value
@@ -142,24 +167,6 @@ class App extends Component {
       textBoxes: x,
       selectedFontVariant: selectedFontVariant.value,
     })
-  }
-
-  handleChangeColor(color) {
-    let x = _cloneDeep(this.state.textBoxes);
-    x[this.state.selectdTextBox].color = color.rgb
-    this.setState({ 
-      foreGroundColor: color.rgb,
-      textBoxes: x,
-    })
-  }
-
-  handleChangeFontSize(selectedFontSize) {
-    let x = _cloneDeep(this.state.textBoxes);
-    x[this.state.selectdTextBox].fontSize = selectedFontSize
-    this.setState({ 
-      textBoxes: x,
-      selectedFontSize
-     })
   }
 
   handleClickOnControlBtn() {
@@ -180,12 +187,13 @@ class App extends Component {
                 fontVariants={this.state.availableFontVariants}
                 handleChangeFontVariant={this.handleChangeFontVariant}
                 handleChangeFontSize={this.handleChangeFontSize}
-                color={this.state.foreGroundColor}
                 handleChangeColor={this.handleChangeColor}
+                fontSize={this.state.userSelected[this.state.userSelectedTextBox].fontSize}
+                color={this.state.userSelected[this.state.userSelectedTextBox].color}
                 bgColor={this.state.backGroundColor}
               />
               <div className="TexBoxContainerWrapper">
-                <TextBoxContainer textBoxes={this.state.textBoxes} 
+                <TextBoxContainer textBoxes={this.state.userSelected} 
                   handleClickOnCompareBtn={this.handleClickOnCompareBtn}/>
               </div>
               <button type="button"

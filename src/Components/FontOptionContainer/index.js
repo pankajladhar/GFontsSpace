@@ -15,10 +15,11 @@ class FontOptionContainer extends Component {
         this.state = {
             selectedFontFamily: '',
             selectedFontVariant: '',
-            selectedFontSize: 40,
+            selectedFontSize: '',
             disabledFontVarians: true,
             displayForeGroundColorPicker: false,
             displayBackGroundColorPicker: false,
+            color: "",
             backGroundColor: {
                 r: '255',
                 g: '255',
@@ -30,6 +31,20 @@ class FontOptionContainer extends Component {
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
         this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            color: nextProps.color,
+            selectedFontSize: nextProps.fontSize
+        })
+    }
+
+    componentDidMount(){
+        this.setState({
+            color: this.props.color,
+            selectedFontSize: this.props.fontSize
+        })
     }
 
     handleChangeFontFamily(selectedFontFamily) {
@@ -48,7 +63,6 @@ class FontOptionContainer extends Component {
                     families: [fontToBeLoader]
                 }
             });
-            console.log()
         }, 0);
     }
 
@@ -58,11 +72,7 @@ class FontOptionContainer extends Component {
     }
 
     handleChangeFontSize(event) {
-        let selectedFontSize = event.target.value
-        this.setState({
-            selectedFontSize
-        });
-        this.props.handleChangeFontSize(selectedFontSize)
+        this.props.handleChangeFontSize(event.target.value)
     }
 
     render() {
@@ -115,7 +125,7 @@ class FontOptionContainer extends Component {
                             </div>
                             <div className="ColorOption__ForeGround OtherProperties__Option">
                                 <label>Text Color</label>
-                                <ColorPicker color={this.props.color}
+                                <ColorPicker color={this.state.color}
                                     handleChangeColor={this.props.handleChangeColor}
                                 />
                             </div>

@@ -19,6 +19,10 @@ class ColorPicker extends Component {
         this.setState({ displayColorPicker: !this.state.displayColorPicker })
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({color: nextProps.color})
+    }
+
     handleOnChange(color) {
         this.setState({ color: color.rgb }, () => {
             if (this.props.isBackgroundColorPicker) {
