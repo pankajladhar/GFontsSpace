@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside';
+import GFontsAction from './../../Containers/Actions';
 import TabContainer from './../TabContainer';
-import { getFontWeightAndSyle }from './../../Helper';
+import { getFontWeightAndSyle } from './../../Helper';
 import './TextBox.css';
 
 class TextBox extends Component {
@@ -13,6 +15,12 @@ class TextBox extends Component {
         }
         this.handleClickOnHowToUse = this.handleClickOnHowToUse.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickOnCompareBtn = this.handleClickOnCompareBtn.bind(this);
+    }
+
+    handleClickOnCompareBtn(e) {
+        e.stopPropagation();
+        this.props.addTextBox(this.props.userSelectedTextBox)
     }
 
     handleClickOnHowToUse() {
@@ -24,8 +32,8 @@ class TextBox extends Component {
         this.setState({ isHowToUseTabVisible: false })
     }
 
-    handleClick(){
-        this.props.onClick(this.props.dataItem)
+    handleClick() {
+        this.props.changeTextBox(this.props.dataItem)
     }
 
 
@@ -38,8 +46,9 @@ class TextBox extends Component {
             color: `rgba(${this.props.color.r}, ${this.props.color.g}, ${this.props.color.b}, ${this.props.color.a})`,
         }
         return (
-            
-            <div className={`${this.props.isActive && "isActive"} TextBox`}>
+
+            <div className={`${this.props.textBoxOption[this.props.userSelectedTextBox].isActive && "isActive"} TextBox`}
+                onClick={this.handleClick} >
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
                         <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontFamily}</li>
@@ -47,12 +56,12 @@ class TextBox extends Component {
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
                     <textarea style={textAreaStyle}
-                        onClick={this.handleClick}
-                        autoFocus={this.props.isActive}
+                        autoFocus={this.props.textBoxOption[this.props.userSelectedTextBox].isActive}
+                        // onFocus={this.handleClick}
                         placeholder="Write Something ..."></textarea>
                 </div>
                 <div className="TextBox__CTA">
-                    <button type="button" onClick={this.props.handleClickOnCompareBtn}>
+                    <button type="button" onClick={this.handleClickOnCompareBtn}>
                         <i className="fa fa-plus" aria-hidden="true"></i>
                         Compare
                     </button>
@@ -61,7 +70,8 @@ class TextBox extends Component {
                         How to use
                     </button>
                 </div>
-                {this.state.isHowToUseTabVisible && <TabContainer fontName={this.props.fontName} />}
+                {this.state.isHowToUseTabVisible &&
+                    <TabContainer fontName={this.props.textBoxOption[this.props.userSelectedTextBox].fontFamily} />}
             </div>
         );
     }
@@ -71,4 +81,23 @@ TextBox.propTypes = {
 
 };
 
-export default enhanceWithClickOutside(TextBox);
+
+function mapStateToProps(state) {
+    return {
+        userSelectedTextBox: state.GFontsReducer.userSelectedTextBox,
+        textBoxOption: state.GFontsReducer.textBoxOption,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        changeTextBox: (activeTextBox) => {
+            dispatch(GFontsAction.changeTextBox(dispatch, activeTextBox))
+        },
+        addTextBox: (activeTextBox) => {
+            dispatch(GFontsAction.addTextBox(dispatch, activeTextBox))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(enhanceWithClickOutside(TextBox))

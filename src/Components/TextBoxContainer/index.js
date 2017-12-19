@@ -11,9 +11,7 @@ class TextBoxContainer extends Component {
                     return (
                         <div key={`index-${index}`}>
                             <TextBox {...item}  
-                                dataItem={index}
-                                handleClickOnCompareBtn={this.props.handleClickOnCompareBtn}
-                            />
+                                dataItem={index} />
                         </div>
                     )
                 })}
