@@ -44,6 +44,19 @@ export default {
         }
     },
 
+    changeFontVariant: (dispatch, fontVariant, userSelectedTextBox) => {
+        console.log(fontVariant)
+        return dispatch => {
+            dispatch({
+                type: "FONTVARIANT_CHANGED",
+                payload: {
+                    fontVariant: fontVariant.value,
+                    userSelectedTextBox: userSelectedTextBox
+                }
+            });
+        }
+    },
+
     changeTextBox: (dispatch, activeTextBox) => {
         return dispatch => {
             dispatch({

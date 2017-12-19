@@ -16,12 +16,12 @@ let initialState = {
             },
             category: "All",
             availableFontFamilies:[],
+            availableFontVariants: [],
         }
     ],
     showLoader: false,
     userSelectedTextBox: 0,
     availableCategories: [],
-    availableFontVariants: [],
     fonts: [],
 }
 
@@ -34,6 +34,7 @@ export default function GFontsReducer(state = initialState, action) {
             newState.fonts = action.payload.fonts;
             newState.availableCategories = action.payload.availableCategories;
             newState.textBoxOption[0].availableFontFamilies = action.payload.availableFontFamilies;
+            newState.textBoxOption[0].availableFontVariants = initialState.textBoxOption.availableFontVariants;
             break;
 
         case "CATEGORY_CHANGED":
@@ -46,7 +47,13 @@ export default function GFontsReducer(state = initialState, action) {
         case "FONTFAMLIY_CHANGED":
             temp = _cloneDeep(newState);
             temp.textBoxOption[action.payload.userSelectedTextBox].fontFamily = action.payload.fontFamily;
-            temp.availableFontVariants = action.payload.availableFontVariants
+            temp.textBoxOption[action.payload.userSelectedTextBox].availableFontVariants = action.payload.availableFontVariants
+            newState = temp;
+            break;
+        
+        case "FONTVARIANT_CHANGED":
+            temp = _cloneDeep(newState);
+            temp.textBoxOption[action.payload.userSelectedTextBox].fontVariant = action.payload.fontVariant;
             newState = temp;
             break;
 

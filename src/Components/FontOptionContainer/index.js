@@ -21,30 +21,34 @@ class FontOptionContainer extends Component {
                 g: '255',
                 b: '255',
                 a: '1',
-            }
+            },
+            isFontVariantDisabled: true,
         }
         this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
         this.handleChangeColor = this.handleChangeColor.bind(this);
         this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
+        this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     }
 
     handleClickOnCategory(event) {
+        this.setState({isFontVariantDisabled : true})
         let categoryName = event.target.dataset.category;
         this.props.categoryChange(this.props.fonts, categoryName, this.props.userSelectedTextBox)
     }
 
     handleChangeFontFamily(selectedFontFamily) {
+        let activeTextBox = this.props.textBoxOption[this.props.userSelectedTextBox];
+        this.setState({isFontVariantDisabled : false})
+        this.props.changeFontFamily(selectedFontFamily, this.props.userSelectedTextBox, activeTextBox.availableFontFamilies)
         setTimeout(() => {
-            // let fontToBeLoader = `${selectedFontFamily.value}:${_map(this.props.fontVariants, "label").toString()}`
-            let fontToBeLoader = `${selectedFontFamily.value}`
+            let fontToBeLoader = `${selectedFontFamily.value}:${_map(this.props.textBoxOption[this.props.userSelectedTextBox].availableFontVariants, "label").toString()}`
             selectedFontFamily && WebFont.load({
                 google: {
                     families: [fontToBeLoader]
                 }
             });
         }, 0);
-        this.props.changeFontFamily(selectedFontFamily, this.props.userSelectedTextBox, this.props.textBoxOption[this.props.userSelectedTextBox].availableFontFamilies)
     }
 
     handleChangeColor(color) {
@@ -56,8 +60,8 @@ class FontOptionContainer extends Component {
     }
 
     handleChangeFontVariant(selectedFontVariant) {
-        // this.setState({ selectedFontVariant });
-        // this.props.handleChangeFontVariant(selectedFontVariant)
+        let activeTextBox = this.props.textBoxOption[this.props.userSelectedTextBox];
+        this.props.changeFontVariant(selectedFontVariant, this.props.userSelectedTextBox)
     }
 
 
@@ -94,8 +98,9 @@ class FontOptionContainer extends Component {
                             name="FontVariantSelectBox"
                             value={activeTextBox.fontVariant}
                             onChange={this.handleChangeFontVariant}
-                            options={this.props.availableFontVariants}
+                            options={activeTextBox.availableFontVariants}
                             clearable={false}
+                            disabled={this.state.isFontVariantDisabled}
                             backspaceRemoves={false}
                             placeholder="Select Font Variants"
                         />
@@ -139,7 +144,6 @@ function mapStateToProps(state) {
         textBoxOption: state.GFontsReducer.textBoxOption,
         fonts: state.GFontsReducer.fonts,
         availableCategories: state.GFontsReducer.availableCategories,
-        availableFontVariants: state.GFontsReducer.availableFontVariants,
     }
 }
 
@@ -150,6 +154,9 @@ function mapDispatchToProps(dispatch) {
         },
         changeFontFamily: (fontFamily, userSelectedTextBox, availableFontFamilies) => {
             dispatch(GFontsAction.changeFontFamily(dispatch, fontFamily, userSelectedTextBox, availableFontFamilies))
+        },
+        changeFontVariant: (fontVariant, userSelectedTextBox) => {
+            dispatch(GFontsAction.changeFontVariant(dispatch, fontVariant, userSelectedTextBox))
         },
         changeTextColor: (color, userSelectedTextBox) => {
             dispatch(GFontsAction.changeTextColor(dispatch, color, userSelectedTextBox))
