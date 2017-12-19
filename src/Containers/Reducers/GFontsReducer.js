@@ -4,8 +4,8 @@ let initialState = {
     textBoxOption: [
         {
             isActive: true,
-            fontFamily: "Oswald",
-            fontVariant: "regular",
+            fontFamily: "",
+            fontVariant: "",
             fontSize: "40",
             value: "",
             color: {
@@ -13,13 +13,14 @@ let initialState = {
                 g: '0',
                 b: '0',
                 a: '1',
-            }
+            },
+            category: "All",
+            availableFontFamilies:[],
         }
     ],
     showLoader: false,
     userSelectedTextBox: 0,
     availableCategories: [],
-    availableFontFamilies: [],
     availableFontVariants: [],
     fonts: [],
 }
@@ -28,18 +29,17 @@ export default function GFontsReducer(state = initialState, action) {
     let newState = Object.assign({}, state), temp;
     switch (action.type) {
         case "FETCHED_FONTS":
-            newState.userSelectedTextBox = initialState.userSelectedTextBox;
-            // newState.textBoxOption = [initialState.textBoxOption[0]];
+            newState.userSelectedTextBox = initialState.userSelectedTextBox            
             newState.textBoxOption = initialState.textBoxOption;
             newState.fonts = action.payload.fonts;
             newState.availableCategories = action.payload.availableCategories;
-            newState.availableFontFamilies = action.payload.availableFontFamilies;
+            newState.textBoxOption[0].availableFontFamilies = action.payload.availableFontFamilies;
             break;
 
         case "CATEGORY_CHANGED":
             temp = _cloneDeep(newState);
-            temp.availableCategories = action.payload.availableCategories;
-            temp.availableFontFamilies = action.payload.availableFontFamilies;
+            temp.textBoxOption[action.payload.userSelectedTextBox].category = action.payload.selectedCategory
+            temp.textBoxOption[action.payload.userSelectedTextBox].availableFontFamilies = action.payload.availableFontFamilies;
             newState = temp;
             break;
 

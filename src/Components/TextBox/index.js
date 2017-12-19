@@ -39,7 +39,7 @@ class TextBox extends Component {
 
     render() {
         const textAreaStyle = {
-            fontFamily: `'${this.props.fontName}', sans-serif`,
+            fontFamily: `'${this.props.fontFamily || "Oswald"}', sans-serif`,
             fontSize: `${this.props.fontSize}px`,
             fontWeight: getFontWeightAndSyle(this.props.fontVariant).fontWeight,
             fontStyle: getFontWeightAndSyle(this.props.fontVariant).fontStyle,
@@ -51,8 +51,8 @@ class TextBox extends Component {
                 onClick={this.handleClick} >
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
-                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontFamily}</li>
-                        <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant}</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontFamily">{this.props.fontFamily  || "Oswald"}</li>
+                        <li className="FontsDetails__Item FontsDetails__Item--FontVariant">{this.props.fontVariant || "Regular"}</li>
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
                     <textarea style={textAreaStyle}

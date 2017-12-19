@@ -18,14 +18,13 @@ export default {
         }
     },
 
-    categoryChange: (dispatch, fonts, catagoires, selectedCategory) => {
-        catagoires.map(item => item.isActive = item.name === selectedCategory ? true : false );
-
+    categoryChange: (dispatch, fonts, selectedCategory, userSelectedTextBox) => {
         return dispatch => {
             dispatch({
                 type: "CATEGORY_CHANGED",
                 payload: {
-                    availableCategories: catagoires,
+                    userSelectedTextBox: userSelectedTextBox,
+                    selectedCategory: selectedCategory,
                     availableFontFamilies: fonts[selectedCategory],
                 }
             });
@@ -33,7 +32,6 @@ export default {
     },
 
     changeFontFamily: (dispatch, fontFamily, userSelectedTextBox, availableFontFamilies) =>{
-        console.log(",", availableFontFamilies)
         return dispatch => {
             dispatch({
                 type: "FONTFAMLIY_CHANGED",

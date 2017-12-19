@@ -31,19 +31,20 @@ class FontOptionContainer extends Component {
 
     handleClickOnCategory(event) {
         let categoryName = event.target.dataset.category;
-        this.props.categoryChange(this.props.fonts, this.props.availableCategories, categoryName)
+        this.props.categoryChange(this.props.fonts, categoryName, this.props.userSelectedTextBox)
     }
 
     handleChangeFontFamily(selectedFontFamily) {
         setTimeout(() => {
-            let fontToBeLoader = `${selectedFontFamily.value}:${_map(this.props.fontVariants, "label").toString()}`
+            // let fontToBeLoader = `${selectedFontFamily.value}:${_map(this.props.fontVariants, "label").toString()}`
+            let fontToBeLoader = `${selectedFontFamily.value}`
             selectedFontFamily && WebFont.load({
                 google: {
                     families: [fontToBeLoader]
                 }
             });
         }, 0);
-        this.props.changeFontFamily(selectedFontFamily, this.props.userSelectedTextBox, this.props.availableFontFamilies)
+        this.props.changeFontFamily(selectedFontFamily, this.props.userSelectedTextBox, this.props.textBoxOption[this.props.userSelectedTextBox].availableFontFamilies)
     }
 
     handleChangeColor(color) {
@@ -61,7 +62,7 @@ class FontOptionContainer extends Component {
 
 
     render() {
-        console.log(this.props.availableFontVariants)
+        let activeTextBox =  this.props.textBoxOption[this.props.userSelectedTextBox];
         return (
             <section className="FontOptionContainer">
                 <section className="FontOptionContainer__Item">
@@ -70,7 +71,7 @@ class FontOptionContainer extends Component {
                         {this.props.availableCategories.map((category, index) =>
                             <li key={`${category.name}-${index}`}
                                 data-category={category.name}
-                                className={`${category.isActive ? "active" : "inactive"}`}
+                                className={`${category.name === activeTextBox.category ? "active" : "inactive"}`}
                                 onClick={this.handleClickOnCategory}>
                                 {category.name}
                             </li>)
@@ -82,16 +83,16 @@ class FontOptionContainer extends Component {
                     <div className="FontOptionContainer__Properties">
                         <Select
                             name="FontFamilySelectBox"
-                            value={this.props.textBoxOption[this.props.userSelectedTextBox].fontFamily}
+                            value={activeTextBox.fontFamily}
                             onChange={this.handleChangeFontFamily}
-                            options={this.props.availableFontFamilies}
+                            options={activeTextBox.availableFontFamilies}
                             clearable={true}
                             placeholder="Select Font Family"
                         />
 
                         <Select
                             name="FontVariantSelectBox"
-                            value={this.props.textBoxOption[this.props.userSelectedTextBox].fontVariant}
+                            value={activeTextBox.fontVariant}
                             onChange={this.handleChangeFontVariant}
                             options={this.props.availableFontVariants}
                             clearable={false}
@@ -107,13 +108,13 @@ class FontOptionContainer extends Component {
                                     min="9"
                                     max="248"
                                     onChange={this.handleChangeFontSize}
-                                    value={this.props.textBoxOption[this.props.userSelectedTextBox].fontSize}
+                                    value={activeTextBox.fontSize}
                                 />
                             </div>
                             <div className="ColorOption__ForeGround OtherProperties__Option">
                                 <label>Text Color</label>
                                 <ColorPicker
-                                    color={this.props.textBoxOption[this.props.userSelectedTextBox].color}
+                                    color={activeTextBox.color}
                                     handleChangeColor={this.handleChangeColor}
                                 />
                             </div>
@@ -138,15 +139,14 @@ function mapStateToProps(state) {
         textBoxOption: state.GFontsReducer.textBoxOption,
         fonts: state.GFontsReducer.fonts,
         availableCategories: state.GFontsReducer.availableCategories,
-        availableFontFamilies: state.GFontsReducer.availableFontFamilies,
         availableFontVariants: state.GFontsReducer.availableFontVariants,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        categoryChange: (fonts, catagoires, selectedCategory) => {
-            dispatch(GFontsAction.categoryChange(dispatch, fonts, catagoires, selectedCategory))
+        categoryChange: (fonts, selectedCategory, userSelectedTextBox) => {
+            dispatch(GFontsAction.categoryChange(dispatch, fonts, selectedCategory, userSelectedTextBox))
         },
         changeFontFamily: (fontFamily, userSelectedTextBox, availableFontFamilies) => {
             dispatch(GFontsAction.changeFontFamily(dispatch, fontFamily, userSelectedTextBox, availableFontFamilies))
