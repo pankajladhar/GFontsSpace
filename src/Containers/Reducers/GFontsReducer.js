@@ -26,7 +26,7 @@ let initialState = {
 }
 
 export default function GFontsReducer(state = initialState, action) {
-    let newState = Object.assign({}, state), temp;
+    let newState = _cloneDeep(state);
     switch (action.type) {
         case "FETCHED_FONTS":
             newState.userSelectedTextBox = initialState.userSelectedTextBox            
@@ -38,52 +38,41 @@ export default function GFontsReducer(state = initialState, action) {
             break;
 
         case "CATEGORY_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption[action.payload.userSelectedTextBox].category = action.payload.selectedCategory
-            temp.textBoxOption[action.payload.userSelectedTextBox].availableFontFamilies = action.payload.availableFontFamilies;
-            newState = temp;
+            newState.textBoxOption[action.payload.userSelectedTextBox].category = action.payload.selectedCategory
+            newState.textBoxOption[action.payload.userSelectedTextBox].availableFontFamilies = action.payload.availableFontFamilies;
             break;
 
         case "FONTFAMLIY_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption[action.payload.userSelectedTextBox].fontFamily = action.payload.fontFamily;
-            temp.textBoxOption[action.payload.userSelectedTextBox].availableFontVariants = action.payload.availableFontVariants
-            newState = temp;
+            newState.textBoxOption[action.payload.userSelectedTextBox].fontFamily = action.payload.fontFamily;
+            newState.textBoxOption[action.payload.userSelectedTextBox].availableFontVariants = action.payload.availableFontVariants
             break;
         
         case "FONTVARIANT_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption[action.payload.userSelectedTextBox].fontVariant = action.payload.fontVariant;
-            newState = temp;
+            newState.textBoxOption[action.payload.userSelectedTextBox].fontVariant = action.payload.fontVariant;
             break;
 
         case "TEXTBOX_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.userSelectedTextBox = action.payload.userSelectedTextBox;
-            newState = temp;
+            newState.userSelectedTextBox = action.payload.userSelectedTextBox;
+            newState.textBoxOption.map((element, index) => {
+                element.isActive = false
+            });
+            newState.textBoxOption[action.payload.userSelectedTextBox].isActive = true;
             break;
 
         case "TEXTCOLOR_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption[action.payload.userSelectedTextBox].color = action.payload.color;
-            newState = temp;
+            newState.textBoxOption[action.payload.userSelectedTextBox].color = action.payload.color;
             break;
 
         case "FONTSIZE_CHANGED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption[action.payload.userSelectedTextBox].fontSize = action.payload.fontSize;
-            newState = temp;
+            newState.textBoxOption[action.payload.userSelectedTextBox].fontSize = action.payload.fontSize;
             break;
 
         case "NEWTEXTBOX_ADDED":
-            temp = _cloneDeep(newState);
-            temp.textBoxOption.push(initialState.textBoxOption[0])
-            temp.textBoxOption.map((element, index) => {
-                element.isActive = action.payload.userSelectedTextBox + 1 === index ? true : false
+            newState.textBoxOption.push(initialState.textBoxOption[0])
+            newState.textBoxOption.map((element, index) => {
+                element.isActive = false
             });
-            temp.textBoxOption[action.payload.userSelectedTextBox + 1].isActive = true;
-            temp.userSelectedTextBox = action.payload.userSelectedTextBox + 1;
-            newState = temp;
+            newState.userSelectedTextBox = action.payload.userSelectedTextBox + 1;
             break;
         default:
             break;

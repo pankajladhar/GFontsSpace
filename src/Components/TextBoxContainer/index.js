@@ -4,6 +4,10 @@ import './TextBoxContainer.css';
 import TextBox from './../TextBox';
 
 class TextBoxContainer extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() { 
         return (
             <div className="TextBoxContainer">

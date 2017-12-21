@@ -47,7 +47,7 @@ class TextBox extends Component {
         }
         return (
 
-            <div className={`${this.props.textBoxOption[this.props.userSelectedTextBox].isActive && "isActive"} TextBox`}
+            <div className={`${this.props.isActive && "isActive"} TextBox`}
                 onClick={this.handleClick} >
                 <div className="TextBox__TextArea">
                     <ul className="Texbx__FontDetails">
@@ -56,7 +56,7 @@ class TextBox extends Component {
                         <li className="FontsDetails__Item FontsDetails__Item--FontSize">{this.props.fontSize}px</li>
                     </ul>
                     <textarea style={textAreaStyle}
-                        autoFocus={this.props.textBoxOption[this.props.userSelectedTextBox].isActive}
+                        autoFocus={this.props.isActive}
                         // onFocus={this.handleClick}
                         placeholder="Write Something ..."></textarea>
                 </div>
@@ -71,7 +71,7 @@ class TextBox extends Component {
                     </button>
                 </div>
                 {this.state.isHowToUseTabVisible &&
-                    <TabContainer fontName={this.props.textBoxOption[this.props.userSelectedTextBox].fontFamily} />}
+                    <TabContainer fontName={this.props.fontFamily} />}
             </div>
         );
     }
