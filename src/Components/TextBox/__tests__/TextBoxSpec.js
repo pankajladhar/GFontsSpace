@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import TextBox from './../index';
+import { TextBox } from './../index';
 
 describe('TextBox', () => {
     let textBoxProps;
     beforeEach(()=>{
         textBoxProps = {
-            fontName: "Oswald",
+            fontFamily: "Oswald",
             fontVariant: "Regular",
             fontSize: "40",
             color: {
@@ -26,7 +26,7 @@ describe('TextBox', () => {
     });
 
     it('should toggle isHowToUseTabVisible on how to use btn click', ()=>{
-        let wrapper = shallow(<TextBox {...textBoxProps} />).first().shallow();
+        let wrapper = shallow(<TextBox {...textBoxProps} />);
         let elm = wrapper.find('.HowToUse');
         elm.simulate("click");
         expect(wrapper.instance().state.isHowToUseTabVisible).toBeTruthy()

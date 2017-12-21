@@ -7,7 +7,7 @@ import TabContainer from './../TabContainer';
 import { getFontWeightAndSyle } from './../../Helper';
 import './TextBox.css';
 
-class TextBox extends Component {
+export class TextBox extends Component {
     constructor(props) {
         super(props);
         this.state = {

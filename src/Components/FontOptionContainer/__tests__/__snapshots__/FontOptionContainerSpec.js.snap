@@ -12,15 +12,7 @@ exports[`FontOptionContainer renders correctly 1`] = `
     >
       Classification
     </h4>
-    <ul>
-      <li
-        className="active"
-        data-category="sarif"
-        onClick={[Function]}
-      >
-        sarif
-      </li>
-    </ul>
+    <ul />
   </section>
   <section
     className="FontOptionContainer__Item"
@@ -184,7 +176,7 @@ exports[`FontOptionContainer renders correctly 1`] = `
             name="quantity"
             onChange={[Function]}
             type="number"
-            value={40}
+            value="40"
           />
         </div>
         <div

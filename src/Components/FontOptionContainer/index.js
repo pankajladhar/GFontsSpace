@@ -11,7 +11,7 @@ import WebFont from 'webfontloader';
 import ColorPicker from './../ColorPicker'
 import './FontOptionContainer.css'
 
-class FontOptionContainer extends Component {
+export class FontOptionContainer extends Component {
 
     constructor(props) {
         super(props);

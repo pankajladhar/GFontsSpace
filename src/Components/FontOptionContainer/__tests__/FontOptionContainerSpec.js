@@ -1,41 +1,49 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 // import { shallow } from 'enzyme';
-import FontOptionContainer from './../index';
+
+import { FontOptionContainer } from './../index';
 
 describe('FontOptionContainer', () => {
     it('renders correctly', () => {
-        const fontOptionContainerProp = {
-            categories:[{
-                name: "sarif",
-                isActive: true,
-                handleClickOnCategory: jest.fn()
-            }],
-            fontFamilies:[
+        const fontOptionContainerProps = 
+        {
+            textBoxOption: [
                 {
-                    value :"some font",
-                    label :"some font",
+                    isActive: true,
+                    fontFamily: "",
+                    fontVariant: "",
+                    fontSize: "40",
+                    value: "",
+                    color: {
+                        r: '0',
+                        g: '0',
+                        b: '0',
+                        a: '1',
+                    },
+                    category: "All",
+                    availableFontFamilies:[
+                        {
+                            value :"some font",
+                            label :"some font",
+                        }
+                    ],
+                    availableFontVariants: [
+                        {
+                            value :"some variants",
+                            label :"some variants",
+                        }
+                    ],
                 }
             ],
-            handleChangeFontFamily:jest.fn(),
-            fontVariants:["regular", 400],
-            handleChangeFontVariant:jest.fn(),
-            color:{
-                r: '0',
-                g: '0',
-                b: '0',
-                a: '1',
-              },
-            handleChangeColor:jest.fn(),
-            bgColor:{
-                r: '255',
-                g: '255',
-                b: '255',
-                a: '1',
-              },
+            showLoader: false,
+            userSelectedTextBox: 0,
+            availableCategories: [],
+            fonts: [],
         }
+
         let tree = renderer.create(
-            <FontOptionContainer {...fontOptionContainerProp}/>
+            <FontOptionContainer {...fontOptionContainerProps}/>
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
