@@ -29,7 +29,7 @@ export default function GFontsReducer(state = initialState, action) {
     let newState = _cloneDeep(state);
     switch (action.type) {
         case "FETCHED_FONTS":
-            newState.userSelectedTextBox = initialState.userSelectedTextBox            
+            newState.userSelectedTextBox = initialState.userSelectedTextBox
             newState.textBoxOption = initialState.textBoxOption;
             newState.fonts = action.payload.fonts;
             newState.availableCategories = action.payload.availableCategories;
@@ -46,14 +46,14 @@ export default function GFontsReducer(state = initialState, action) {
             newState.textBoxOption[action.payload.userSelectedTextBox].fontFamily = action.payload.fontFamily;
             newState.textBoxOption[action.payload.userSelectedTextBox].availableFontVariants = action.payload.availableFontVariants
             break;
-        
+
         case "FONTVARIANT_CHANGED":
             newState.textBoxOption[action.payload.userSelectedTextBox].fontVariant = action.payload.fontVariant;
             break;
 
         case "TEXTBOX_CHANGED":
             newState.userSelectedTextBox = action.payload.userSelectedTextBox;
-            newState.textBoxOption.map((element, index) => {
+            newState.textBoxOption.forEach((element, index) => {
                 element.isActive = false
             });
             newState.textBoxOption[action.payload.userSelectedTextBox].isActive = true;
@@ -69,7 +69,7 @@ export default function GFontsReducer(state = initialState, action) {
 
         case "NEWTEXTBOX_ADDED":
             newState.textBoxOption.push(initialState.textBoxOption[0])
-            newState.textBoxOption.map((element, index) => {
+            newState.textBoxOption.forEach((element, index) => {
                 element.isActive = false
             });
             newState.userSelectedTextBox = action.payload.userSelectedTextBox + 1;
