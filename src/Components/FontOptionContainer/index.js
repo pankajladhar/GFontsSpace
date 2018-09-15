@@ -60,7 +60,6 @@ export class FontOptionContainer extends Component {
     }
 
     handleChangeFontVariant(selectedFontVariant) {
-        let activeTextBox = this.props.textBoxOption[this.props.userSelectedTextBox];
         this.props.changeFontVariant(selectedFontVariant, this.props.userSelectedTextBox)
     }
 
@@ -136,6 +135,17 @@ export class FontOptionContainer extends Component {
         );
     }
 }
+FontOptionContainer.propTypes = {
+    availableCategories: PropTypes.array,
+    categoryChange: PropTypes.func,
+    changeFontFamily: PropTypes.func,
+    changeFontSize: PropTypes.func,
+    changeFontVariant: PropTypes.func,
+    changeTextColor: PropTypes.func,
+    fonts: PropTypes.object,
+    textBoxOption: PropTypes.array,
+    userSelectedTextBox: PropTypes.number
+};
 
 
 function mapStateToProps(state) {
