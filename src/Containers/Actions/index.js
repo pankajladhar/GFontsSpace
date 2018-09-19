@@ -1,6 +1,6 @@
 
 import { fetchGoolgeFonts, mappedCategoryArray } from './../../Mapper';
-import _cloneDeep from 'lodash/cloneDeep';
+// import _cloneDeep from 'lodash/cloneDeep';
 
 export default {
     fetchData: (dispatch) => {

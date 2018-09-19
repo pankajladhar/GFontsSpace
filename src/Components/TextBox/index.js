@@ -78,9 +78,16 @@ export class TextBox extends Component {
 }
 
 TextBox.propTypes = {
-
+  addTextBox: PropTypes.func,
+  changeTextBox: PropTypes.func,
+  color: PropTypes.object,
+  dataItem: PropTypes.number,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+  fontVariant: PropTypes.string,
+  isActive: PropTypes.bool,
+  userSelectedTextBox: PropTypes.number
 };
-
 
 function mapStateToProps(state) {
     return {

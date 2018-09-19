@@ -104,7 +104,7 @@ class TabContainer extends Component {
 }
 
 TabContainer.propTypes = {
-
+  fontName: PropTypes.string
 };
 
 export default TabContainer;

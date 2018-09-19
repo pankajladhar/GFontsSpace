@@ -6,7 +6,7 @@ import { FontOptionContainer } from './../index';
 
 describe('FontOptionContainer', () => {
     it('renders correctly', () => {
-        const fontOptionContainerProps = 
+        const fontOptionContainerProps =
         {
             textBoxOption: [
                 {
@@ -39,7 +39,7 @@ describe('FontOptionContainer', () => {
             showLoader: false,
             userSelectedTextBox: 0,
             availableCategories: [],
-            fonts: [],
+            fonts: {},
         }
 
         let tree = renderer.create(

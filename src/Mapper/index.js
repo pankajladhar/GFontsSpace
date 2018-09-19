@@ -34,7 +34,7 @@ let fetchGoolgeFonts = () => {
             return res.json()
         })
         .then((fonts) => {
-            fonts.items.map((font) => {
+            fonts.items.forEach((font) => {
                 propertiesToBeDeleted.map((d) => delete font[d]);
                 category = font.category;
                 categoryArray.push(category)
@@ -53,7 +53,7 @@ let fetchGoolgeFonts = () => {
             // need to be removed
 
             let fonts = googleFontResponse;
-            fonts.items.map((font) => {
+            fonts.items.forEach((font) => {
                 propertiesToBeDeleted.map((d) => delete font[d]);
                 category = font.category;
                 categoryArray.push(category)

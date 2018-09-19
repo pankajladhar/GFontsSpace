@@ -28,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className={this.state.isHideControl ? "HideControl" : "ShowControl"}>
-        {this.props.fonts.length == 0 ? <Loader /> :
+        {this.props.fonts.length === 0 ? <Loader /> :
           <div className="App">
             <Header />
             <section className="Wrapper">
@@ -43,7 +43,7 @@ class App extends Component {
               </button>
             </section>
           </div>
-        }      
+        }
         </div>
     );
   }
