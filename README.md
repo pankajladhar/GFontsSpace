@@ -17,6 +17,9 @@ In above can case this helps a lot. User can test all available fonts without an
 - [x] Add **Hide Control** button to hide all with options (in right side) to get better preview
 - [x] Add category for layout i.e. Image with text, blog template. 
 
+## like it?
+⭐️ this repo
+
 ## Contributing
 Feel free to give feedback or raise issue. I'd love to have your helping hand on GFontsSpace! See [CONTRIBUTING.md](https://github.com/pankajladhar/GFontsSpace/blob/master/CONTRIBUTING.md) for more information on how to get started.
 
