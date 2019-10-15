@@ -74,6 +74,16 @@ export default function GFontsReducer(state = initialState, action) {
             });
             newState.userSelectedTextBox = action.payload.userSelectedTextBox + 1;
             break;
+
+        case "TEXTBOX_REMOVED":
+            newState.textBoxOption.forEach((element, index) => {
+              element.isActive = false
+              if(index === action.payload.userSelectedTextBox) {
+                newState.textBoxOption.splice(index, 1)
+              }
+            });
+            newState.userSelectedTextBox = action.payload.userSelectedTextBox - 1;
+            break;
         default:
             break;
     }

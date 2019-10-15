@@ -10,7 +10,8 @@ const TextBoxContainer = (props) => {
                 return (
                     <div key={`index-${index}`}>
                         <TextBox {...item}
-                            dataItem={index} />
+                            dataItem={index}
+                            length={props.textBoxes.length} />
                     </div>
                 )
             })}

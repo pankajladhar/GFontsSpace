@@ -101,5 +101,17 @@ export default {
                 }
             });
         }
+    },
+
+    removeTextBox: (dispatch, userSelectedTextBox) =>{
+      console.log(userSelectedTextBox)
+        return dispatch => {
+            dispatch({
+                type: "TEXTBOX_REMOVED",
+                payload: {
+                    userSelectedTextBox: userSelectedTextBox,
+                }
+            });
+        }
     }
 }
