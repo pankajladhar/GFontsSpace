@@ -16,7 +16,7 @@ class ColorPicker extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ color: nextProps.color })  
+        this.setState({ color: nextProps.color })
     }
 
     handleOnClick() {
@@ -27,6 +27,7 @@ class ColorPicker extends Component {
         this.setState({ color: color.rgb }, () => {
             if (this.props.isBackgroundColorPicker) {
                 document.body.style.backgroundColor = `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`;
+                this.props.handleChangeBgColor(color);
             }
 
             else {
@@ -73,7 +74,8 @@ class ColorPicker extends Component {
 
 ColorPicker.propTypes = {
     isBackgroundColorPicker: PropTypes.bool,
-    handleChangeColor: PropTypes.func
+    handleChangeColor: PropTypes.func,
+    handleChangeBgColor: PropTypes.func
 };
 
 export default enhanceWithClickOutside(ColorPicker);

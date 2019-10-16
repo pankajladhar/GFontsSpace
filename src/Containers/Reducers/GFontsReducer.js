@@ -14,11 +14,18 @@ let initialState = {
                 b: '0',
                 a: '1',
             },
+
             category: "All",
             availableFontFamilies:[],
             availableFontVariants: [],
         }
     ],
+    bgColor: {
+        r: '255',
+        g: '255',
+        b: '255',
+        a: '1',
+    },
     showLoader: false,
     userSelectedTextBox: 0,
     availableCategories: [],
@@ -61,6 +68,10 @@ export default function GFontsReducer(state = initialState, action) {
 
         case "TEXTCOLOR_CHANGED":
             newState.textBoxOption[action.payload.userSelectedTextBox].color = action.payload.color;
+            break;
+
+        case "BGCOLOR_CHANGED":
+            newState.bgColor = action.payload.color;
             break;
 
         case "FONTSIZE_CHANGED":
