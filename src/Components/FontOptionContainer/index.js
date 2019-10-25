@@ -16,17 +16,13 @@ export class FontOptionContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bgColor: {
-                r: '255',
-                g: '255',
-                b: '255',
-                a: '1',
-            },
+            bgColor: this.props.bgColor,
             isFontVariantDisabled: true,
         }
         this.handleClickOnCategory = this.handleClickOnCategory.bind(this);
         this.handleChangeFontFamily = this.handleChangeFontFamily.bind(this);
         this.handleChangeColor = this.handleChangeColor.bind(this);
+        this.handleChangeBgColor = this.handleChangeBgColor.bind(this);
         this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     }
@@ -53,6 +49,10 @@ export class FontOptionContainer extends Component {
 
     handleChangeColor(color) {
         this.props.changeTextColor(color, this.props.userSelectedTextBox)
+    }
+
+    handleChangeBgColor(color) {
+        this.props.changeBgColor(color)
     }
 
     handleChangeFontSize(event) {
@@ -124,7 +124,8 @@ export class FontOptionContainer extends Component {
                             </div>
                             <div className="ColorOption__BackGround OtherProperties__Option">
                                 <label>Background Color</label>
-                                <ColorPicker color={this.state.bgColor}
+                                <ColorPicker color={this.props.bgColor}
+                                    handleChangeBgColor={this.handleChangeBgColor}
                                     isBackgroundColorPicker
                                 />
                             </div>
@@ -142,6 +143,7 @@ FontOptionContainer.propTypes = {
     changeFontSize: PropTypes.func,
     changeFontVariant: PropTypes.func,
     changeTextColor: PropTypes.func,
+    changeBgColor: PropTypes.func,
     fonts: PropTypes.object,
     textBoxOption: PropTypes.array,
     userSelectedTextBox: PropTypes.number
@@ -154,6 +156,7 @@ function mapStateToProps(state) {
         textBoxOption: state.GFontsReducer.textBoxOption,
         fonts: state.GFontsReducer.fonts,
         availableCategories: state.GFontsReducer.availableCategories,
+        bgColor: state.GFontsReducer.bgColor,
     }
 }
 
@@ -170,6 +173,9 @@ function mapDispatchToProps(dispatch) {
         },
         changeTextColor: (color, userSelectedTextBox) => {
             dispatch(GFontsAction.changeTextColor(dispatch, color, userSelectedTextBox))
+        },
+        changeBgColor: (color, userSelectedTextBox) => {
+            dispatch(GFontsAction.changeBgColor(dispatch, color))
         },
         changeFontSize: (fontSize, userSelectedTextBox) => {
             dispatch(GFontsAction.changeFontSize(dispatch, fontSize, userSelectedTextBox))

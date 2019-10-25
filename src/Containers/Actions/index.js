@@ -80,6 +80,17 @@ export default {
         }
     },
 
+    changeBgColor: (dispatch, color) => {
+        return dispatch => {
+            dispatch({
+                type: "BGCOLOR_CHANGED",
+                payload: {
+                    color: color.rgb,
+                }
+            });
+        }
+    },
+
     changeFontSize: (dispatch, fontSize, userSelectedTextBox) => {
         return dispatch => {
             dispatch({
@@ -96,6 +107,17 @@ export default {
         return dispatch => {
             dispatch({
                 type: "NEWTEXTBOX_ADDED",
+                payload: {
+                    userSelectedTextBox: userSelectedTextBox,
+                }
+            });
+        }
+    },
+
+    removeTextBox: (dispatch, userSelectedTextBox) =>{
+        return dispatch => {
+            dispatch({
+                type: "TEXTBOX_REMOVED",
                 payload: {
                     userSelectedTextBox: userSelectedTextBox,
                 }

@@ -16,11 +16,17 @@ export class TextBox extends Component {
         this.handleClickOnHowToUse = this.handleClickOnHowToUse.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleClickOnCompareBtn = this.handleClickOnCompareBtn.bind(this);
+        this.handleClickOnRemoveBtn = this.handleClickOnRemoveBtn.bind(this);
     }
 
     handleClickOnCompareBtn(e) {
         e.stopPropagation();
         this.props.addTextBox(this.props.userSelectedTextBox)
+    }
+
+    handleClickOnRemoveBtn(e) {
+      e.stopPropagation();
+      this.props.removeTextBox(this.props.userSelectedTextBox)
     }
 
     handleClickOnHowToUse() {
@@ -65,6 +71,11 @@ export class TextBox extends Component {
                         <i className="fa fa-plus" aria-hidden="true"></i>
                         Compare
                     </button>
+                    {(this.props.length > 1) ?
+                    <button type="button" onClick={this.handleClickOnRemoveBtn}>
+                        <i className="fa fa-minus" aria-hidden="true"></i>
+                        Remove
+                    </button> : '' }
                     <button className="HowToUse" type="button" onClick={this.handleClickOnHowToUse}>
                         <i className="fa fa-code" aria-hidden="true"></i>
                         How to use
@@ -79,6 +90,7 @@ export class TextBox extends Component {
 
 TextBox.propTypes = {
   addTextBox: PropTypes.func,
+  removeTextBox: PropTypes.func,
   changeTextBox: PropTypes.func,
   color: PropTypes.object,
   dataItem: PropTypes.number,
@@ -103,6 +115,9 @@ function mapDispatchToProps(dispatch) {
         },
         addTextBox: (activeTextBox) => {
             dispatch(GFontsAction.addTextBox(dispatch, activeTextBox))
+        },
+        removeTextBox: (activeTextBox) => {
+            dispatch(GFontsAction.removeTextBox(dispatch, activeTextBox))
         }
     }
 }

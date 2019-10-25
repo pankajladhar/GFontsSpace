@@ -14,11 +14,18 @@ let initialState = {
                 b: '0',
                 a: '1',
             },
+
             category: "All",
             availableFontFamilies:[],
             availableFontVariants: [],
         }
     ],
+    bgColor: {
+        r: '255',
+        g: '255',
+        b: '255',
+        a: '1',
+    },
     showLoader: false,
     userSelectedTextBox: 0,
     availableCategories: [],
@@ -63,6 +70,10 @@ export default function GFontsReducer(state = initialState, action) {
             newState.textBoxOption[action.payload.userSelectedTextBox].color = action.payload.color;
             break;
 
+        case "BGCOLOR_CHANGED":
+            newState.bgColor = action.payload.color;
+            break;
+
         case "FONTSIZE_CHANGED":
             newState.textBoxOption[action.payload.userSelectedTextBox].fontSize = action.payload.fontSize;
             break;
@@ -73,6 +84,16 @@ export default function GFontsReducer(state = initialState, action) {
                 element.isActive = false
             });
             newState.userSelectedTextBox = action.payload.userSelectedTextBox + 1;
+            break;
+
+        case "TEXTBOX_REMOVED":
+            newState.textBoxOption.forEach((element, index) => {
+              element.isActive = false
+              if(index === action.payload.userSelectedTextBox) {
+                newState.textBoxOption.splice(index, 1)
+              }
+            });
+            newState.userSelectedTextBox = action.payload.userSelectedTextBox - 1;
             break;
         default:
             break;
