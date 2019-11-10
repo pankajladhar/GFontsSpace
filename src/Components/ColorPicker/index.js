@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SketchPicker } from 'react-color';
 import enhanceWithClickOutside from 'react-click-outside';
-import './ColorPicker.css';
+import './ColorPicker.scss';
 
 class ColorPicker extends Component {
     constructor(props) {

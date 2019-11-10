@@ -6,7 +6,7 @@ import FontOptionContainer from './../FontOptionContainer';
 import TextBoxContainer from './../TextBoxContainer';
 import Loader from './../Loader';
 import Header from './../Header';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {

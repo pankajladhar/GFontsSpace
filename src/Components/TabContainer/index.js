@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CopyContent from './../CopyContent';
-import './TabContainer.css';
+import './TabContainer.scss';
 
 class TabContainer extends Component {
     constructor(props) {

@@ -9,7 +9,7 @@ import GFontsAction from './../../Containers/Actions';
 
 import WebFont from 'webfontloader';
 import ColorPicker from './../ColorPicker'
-import './FontOptionContainer.css'
+import './FontOptionContainer.scss'
 
 export class FontOptionContainer extends Component {
 
