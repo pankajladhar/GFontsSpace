@@ -102,6 +102,18 @@ export default {
             });
         }
     },
+    
+    changeLineHeight: (dispatch, lineHeight, userSelectedTextBox) => {
+        return dispatch => {
+            dispatch({
+                type: "LINEHEIGHT_CHANGED",
+                payload: {
+                    lineHeight: lineHeight,
+                    userSelectedTextBox: userSelectedTextBox,
+                }
+            });
+        }
+    },
 
     addTextBox: (dispatch, userSelectedTextBox) =>{
         return dispatch => {

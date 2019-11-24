@@ -24,6 +24,7 @@ export class FontOptionContainer extends Component {
         this.handleChangeColor = this.handleChangeColor.bind(this);
         this.handleChangeBgColor = this.handleChangeBgColor.bind(this);
         this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
+        this.handleChangeLineHeight = this.handleChangeLineHeight.bind(this);
         this.handleChangeFontVariant = this.handleChangeFontVariant.bind(this);
     }
 
@@ -57,6 +58,10 @@ export class FontOptionContainer extends Component {
 
     handleChangeFontSize(event) {
         this.props.changeFontSize(event.target.value, this.props.userSelectedTextBox)
+    }
+
+    handleChangeLineHeight(event) {
+        this.props.changeLineHeight(event.target.value, this.props.userSelectedTextBox)
     }
 
     handleChangeFontVariant(selectedFontVariant) {
@@ -115,6 +120,15 @@ export class FontOptionContainer extends Component {
                                     value={activeTextBox.fontSize}
                                 />
                             </div>
+                            <div className="LineHeight__Option OtherProperties__Option">
+                                <label>Line height</label>
+                                <input type="number"
+                                    name="lineHeight"
+                                    min="0"
+                                    onChange={this.handleChangeLineHeight}
+                                    value={activeTextBox.lineHeight}
+                                />
+                            </div>
                             <div className="ColorOption__ForeGround OtherProperties__Option">
                                 <label>Text Color</label>
                                 <ColorPicker
@@ -141,6 +155,7 @@ FontOptionContainer.propTypes = {
     categoryChange: PropTypes.func,
     changeFontFamily: PropTypes.func,
     changeFontSize: PropTypes.func,
+    changeLineHeight: PropTypes.func,
     changeFontVariant: PropTypes.func,
     changeTextColor: PropTypes.func,
     changeBgColor: PropTypes.func,
@@ -179,6 +194,9 @@ function mapDispatchToProps(dispatch) {
         },
         changeFontSize: (fontSize, userSelectedTextBox) => {
             dispatch(GFontsAction.changeFontSize(dispatch, fontSize, userSelectedTextBox))
+        },
+        changeLineHeight: (lineHeight, userSelectedTextBox) => {
+            dispatch(GFontsAction.changeLineHeight(dispatch, lineHeight, userSelectedTextBox))
         }
     }
 }
