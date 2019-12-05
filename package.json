@@ -28,8 +28,6 @@
     "webfontloader": "1.6.28"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "PUBLIC_URL=. react-scripts build",
     "release": "npm run build && git checkout gh-pages && sh ./build.sh",
