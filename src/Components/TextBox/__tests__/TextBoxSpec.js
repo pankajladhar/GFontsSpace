@@ -10,6 +10,7 @@ describe('TextBox', () => {
             fontFamily: "Oswald",
             fontVariant: "Regular",
             fontSize: "40",
+            lineHeight: "40",
             color: {
                 r: '0',
                 g: '0',
