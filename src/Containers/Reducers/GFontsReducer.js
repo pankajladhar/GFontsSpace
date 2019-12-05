@@ -7,6 +7,7 @@ let initialState = {
             fontFamily: "",
             fontVariant: "",
             fontSize: "40",
+            lineHeight: "40",
             value: "",
             color: {
                 r: '0',
@@ -76,6 +77,10 @@ export default function GFontsReducer(state = initialState, action) {
 
         case "FONTSIZE_CHANGED":
             newState.textBoxOption[action.payload.userSelectedTextBox].fontSize = action.payload.fontSize;
+            break;
+
+        case "LINEHEIGHT_CHANGED":
+            newState.textBoxOption[action.payload.userSelectedTextBox].lineHeight = action.payload.lineHeight;
             break;
 
         case "NEWTEXTBOX_ADDED":

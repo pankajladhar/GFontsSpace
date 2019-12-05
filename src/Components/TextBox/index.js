@@ -46,6 +46,7 @@ export class TextBox extends Component {
     const textAreaStyle = {
       fontFamily: `'${this.props.fontFamily || "Oswald"}', sans-serif`,
       fontSize: `${this.props.fontSize}px`,
+      lineHeight: `${this.props.lineHeight}px`,
       fontWeight: getFontWeightAndSyle(this.props.fontVariant).fontWeight,
       fontStyle: getFontWeightAndSyle(this.props.fontVariant).fontStyle,
       color: `rgba(${this.props.color.r}, ${this.props.color.g}, ${this.props.color.b}, ${this.props.color.a})`

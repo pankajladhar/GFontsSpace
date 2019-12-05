@@ -14,6 +14,7 @@ describe('FontOptionContainer', () => {
                     fontFamily: "",
                     fontVariant: "",
                     fontSize: "40",
+                    lineHeight: "40",
                     value: "",
                     color: {
                         r: '0',
