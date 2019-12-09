@@ -56,7 +56,7 @@ class TabContainer extends Component {
                                 />
                             </div>
                             <strong>Goolgle Fonts:</strong>
-                            <a className="Link" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
+                            <a className="Link" rel="noopener noreferrer" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
                                 https://fonts.google.com/specimen/{this.props.fontName.replace(/\s/g, "+")}
                             </a>
                         </div>
@@ -92,7 +92,7 @@ class TabContainer extends Component {
                                 />
                             </div>
                             <strong>Goolgle Fonts:</strong>
-                            <a className="Link" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
+                            <a className="Link" rel="noopener noreferrer" href={`https://fonts.google.com/specimen/${this.props.fontName.replace(/\s/g, "+")}`} target="_blank">
                                 https://fonts.google.com/specimen/{this.props.fontName.replace(/\s/g, "+")}
                             </a>
                         </div>

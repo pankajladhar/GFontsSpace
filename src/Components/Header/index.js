@@ -11,7 +11,7 @@ const Header = (props) => {
                 </a>
                 <div className="App__SocialIcons">
                     <a className="App__SocialIcons__Link"
-                        href="https://www.linkedin.com/in/pankaj-ladhar-51781137/"
+                        href="https://www.linkedin.com/in/pankajladhar/"
                         target="_blank"
                         rel="noopener noreferrer"
                         title="Pankaj Ladhar linkedin profile ">

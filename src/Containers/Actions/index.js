@@ -45,7 +45,6 @@ export default {
     },
 
     changeFontVariant: (dispatch, fontVariant, userSelectedTextBox) => {
-        console.log(fontVariant)
         return dispatch => {
             dispatch({
                 type: "FONTVARIANT_CHANGED",
